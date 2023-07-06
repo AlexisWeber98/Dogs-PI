@@ -17,7 +17,8 @@ module.exports = postDogs = async (req, res) => {
             weightMax,
             lifeSpan,
             bredFor,
-            breedGroup
+            breedGroup,
+            created: true
         }})
 
         return res.status(200).json(newDog)
