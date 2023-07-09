@@ -41,7 +41,7 @@ module.exports = (sequelize) => {
     },
 
     lifeSpan: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       defaultValue: 0,
     },
 
@@ -56,10 +56,11 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
 
+
     created: {
       type: DataTypes.BOOLEAN,
     defaultValue:false  
-    }
-
+    },
+ 
   }, { timestamps: false});
 };

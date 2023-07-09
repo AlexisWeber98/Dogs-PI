@@ -1,6 +1,5 @@
 require('dotenv').config();
 const axios = require("axios");
-const https = require('https')
 const {API_KEY} = process.env
 
 

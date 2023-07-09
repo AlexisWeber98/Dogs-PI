@@ -1,30 +1,54 @@
-const {Dog} = require('../db')
-
+const { Dog, Temperament, Dog_Temperament } = require('../db');
+const getDog = require('./getDogDetail');
 
 module.exports = postDogs = async (req, res) => {
-    try {
-        const {id, name, image, heightMin, heightMax, weightMax, weightMin, lifeSpan, bredFor, breedGroup } = req.body;
+  try {
+    const {
+      id,
+      name,
+      image,
+      heightMin,
+      heightMax,
+      weightMax,
+      weightMin,
+      lifeSpan,
+      bredFor,
+      temperament,
+      breedGroup,
+    } = req.body;
 
-        if(!name || !heightMin|| !heightMax || !weightMin|| !weightMax) return res.status(400).json({message:"All fields are required"});
-        
-       const newDog = await Dog.findOrCreate({where: {
-            id,
-            name,
-            image,
-            heightMin,
-            heightMax,
-            weightMin,
-            weightMax,
-            lifeSpan,
-            bredFor,
-            breedGroup,
-            created: true
-        }})
+    let temperamentRecord = null;
 
-        return res.status(200).json(newDog)
-
+    if (!name || !heightMin || !heightMax || !weightMin || !weightMax) {
+      return res.status(400).json({ message: "All fields are required" });
     }
-    catch (error){
-        res.status(500).send(error.message)
+
+    if (temperament) temperamentRecord = await Temperament.findAll({
+        where: {
+            name: temperament
+        }});
+
+
+
+    const [dog, create] = await Dog.findOrCreate({ where:{
+      name,
+      image,
+      heightMin,
+      heightMax,
+      weightMin,
+      weightMax,
+      lifeSpan,
+      bredFor,
+      breedGroup,
+      created: true,}
+    });
+
+    if (temperamentRecord) {
+      await dog.addTemperament(temperamentRecord.name);
     }
-}
+
+    return res.status(200).json(dog);
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+};

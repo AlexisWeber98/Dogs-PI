@@ -5,26 +5,30 @@ const {Dog, Temperaments} = require('../db');
 
 
 const isIntegerId = (id) => {
-    return /^\d+$/.test(id)
+    return      /^\d+$/.test(id)
 };
 
 
-const getDetailApi = async (id) => {
+const getDetailApi = async (idRaza) => {
     try {
-    const URL = `https://api.thedogapi.com/v1/breeds/${id}?api_key=${API_KEY}`
+    const URL = `https://api.thedogapi.com/v1/breeds/?api_key=${API_KEY}`
     const {data} = await axios.get(URL)
+    
+    const dog = data.find((dog) => dog.id === parseInt(idRaza))
+
+    console.log(dog);
 
     const dogDetail = {
-        id: data.id,
-        name: data.name,
-        image: data.image?.url,
-        bredFor: data.bred_for || "unknown",
-        breedGroup: data.breed_group,
-        lifeSpan: data.life_span,
-        temperament: data.temperament,
-        origin: data.origin,
-        weight: data.weight.metric,
-        height: data.height.metric
+        id: dog.id,
+        name: dog.name,
+        image: dog.image?.url,
+        bredFor: dog.bred_for || "unknown",
+        breedGroup: dog.breed_group,
+        lifeSpan: dog.life_span,
+        temperament: dog.temperament,
+        origin: dog.origin,
+        weight: dog.weight.metric,
+        height: dog.height.metric
     };
 
     return dogDetail;
@@ -38,7 +42,10 @@ const getDetailDB = async (id) => {
     try {
     const dog = await Dog.findOne({
         where: {id},
-        include: [Temperaments]})
+        include: {
+          model : Temperaments,
+        atributes: ["name"],
+      through: {atributes: []}}})
 
         if (!dog) {
             throw new Error('Perro no encontrado en la base de datos')
@@ -47,12 +54,13 @@ const getDetailDB = async (id) => {
         const dogDetail = {
             id : dog.id,
             name: dog.name,
+            image: dog.image,
             lifeSpan: dog.lifeSpan,
             height: `${dog.heightMin}-${dog.heightMax}`,
             weight: `${dog.weightMin}-${dog.weightMax}`,
             bredFor: dog. bredFor,
             breedGroup: dog.breedGroup,
-            temperaments: dog.Temperaments.map((temperament => temperament.name)),
+            temperament: dog.Temperaments,
             create: dog.create
         };
 
@@ -62,7 +70,7 @@ const getDetailDB = async (id) => {
   }
 }
 
-module.exports = getDogDetail =  async (req, res) => {
+module.exports = getDog =  async (req, res) => {
     try { 
         
         const {idRaza} = req.params     
