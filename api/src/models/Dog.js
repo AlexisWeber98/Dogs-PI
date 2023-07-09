@@ -56,6 +56,16 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
 
+    temperament: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      references: {
+        model: 'Temperaments',
+        key: 'id' 
+      }
+    },
+    
+
 
     created: {
       type: DataTypes.BOOLEAN,

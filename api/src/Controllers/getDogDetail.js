@@ -40,6 +40,8 @@ const getDetailApi = async (idRaza) => {
 
 const getDetailDB = async (id) => {
     try {
+    let findTemperament = null;
+
     const dog = await Dog.findOne({
         where: {id},
         include: {
@@ -50,6 +52,12 @@ const getDetailDB = async (id) => {
         if (!dog) {
             throw new Error('Perro no encontrado en la base de datos')
         };
+      
+        if (dog.temperament) {
+          findTemperament = await Temperaments.findOne({where: {
+            id: dog.temperament
+          }})
+        }
 
         const dogDetail = {
             id : dog.id,
@@ -60,7 +68,7 @@ const getDetailDB = async (id) => {
             weight: `${dog.weightMin}-${dog.weightMax}`,
             bredFor: dog. bredFor,
             breedGroup: dog.breedGroup,
-            temperament: dog.Temperaments,
+            temperament: findTemperament.name,
             create: dog.create
         };
 

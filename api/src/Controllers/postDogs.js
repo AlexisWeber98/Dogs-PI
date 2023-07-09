@@ -1,5 +1,5 @@
-const { Dog, Temperament, Dog_Temperament } = require('../db');
-const getDog = require('./getDogDetail');
+const { Dog, Temperaments } = require('../db');
+
 
 module.exports = postDogs = async (req, res) => {
   try {
@@ -23,10 +23,13 @@ module.exports = postDogs = async (req, res) => {
       return res.status(400).json({ message: "All fields are required" });
     }
 
-    if (temperament) temperamentRecord = await Temperament.findAll({
+    if (temperament) temperamentRecord = await Temperaments.findOne({
         where: {
-            name: temperament
+            id: temperament
         }});
+        else{
+          console.log("no se encontro temperament" )
+        };
 
 
 
@@ -40,11 +43,15 @@ module.exports = postDogs = async (req, res) => {
       lifeSpan,
       bredFor,
       breedGroup,
-      created: true,}
+      created: true,
+    },
+      defaults: {
+        temperament: temperamentRecord.id
+      }
     });
 
     if (temperamentRecord) {
-      await dog.addTemperament(temperamentRecord.name);
+      await dog.addTemperaments(temperamentRecord);
     }
 
     return res.status(200).json(dog);
