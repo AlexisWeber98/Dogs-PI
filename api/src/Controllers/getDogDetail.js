@@ -1,7 +1,7 @@
 require('dotenv').config();
 const axios = require("axios");
 const {API_KEY} = process.env
-const {Dog, Temperaments} = require('../db');
+const {Dog, Temperament} = require('../db');
 
 
 const isIntegerId = (id) => {
@@ -16,8 +16,7 @@ const getDetailApi = async (idRaza) => {
     
     const dog = data.find((dog) => dog.id === parseInt(idRaza))
 
-    console.log(dog);
-
+  
     const dogDetail = {
         id: dog.id,
         name: dog.name,
@@ -45,7 +44,7 @@ const getDetailDB = async (id) => {
     const dog = await Dog.findOne({
         where: {id},
         include: {
-          model : Temperaments,
+          model : Temperament,
         atributes: ["name"],
       through: {atributes: []}}})
 
@@ -54,7 +53,7 @@ const getDetailDB = async (id) => {
         };
       
         if (dog.temperament) {
-          findTemperament = await Temperaments.findOne({where: {
+          findTemperament = await Temperament.findOne({where: {
             id: dog.temperament
           }})
         }

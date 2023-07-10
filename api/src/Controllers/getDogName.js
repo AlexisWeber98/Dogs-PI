@@ -1,38 +1,53 @@
-const { default: axios } = require('axios');
-const { Dog } = require('../db')
-const {URL} = process.env
-const search = "search?q="
+const { Dog, Temperament } = require("../db");
+const axios = require("axios");
+const { Op } = require("sequelize");
 
+const URL = "https://api.thedogapi.com/v1/breeds/search?q=";
 
-const getDogNameApi = async (req,res)=>{
-try {
-    const {name} = req.query;
+// ---------------- Funcion para buscar en la API ----------------------//
 
-    const response = await axios(`${URL}/${search}${name}`)
-    const dog = response.data;
+const getFromApi = async (name) => {
+	try {
+		
+		
+		const response = await axios.get( `${URL}${name}` )
+		
+		const dog = response.data;
+		
+		return dog
+	} catch (error) {
+		
+	}
+};
 
-    if(!dog) return res.status(404).json({message: "no se encontraron resultados en la API"});
+//---------------- Funcion para buscar en la DataBase ---------------------//
 
-    return res.status(200).json(dog)
-
-} catch (error) {
-    res.status(500).json({ message: 'Error al buscar razas de perros por nombre en la API externa'}); 
+const getFromDataBase = async (name) => {
+	const dogDb = await Dog.findAll({where:{
+		name: {
+			[Op.iLike]: `%${name}%`}
+	}, include: Temperament});
+	
+	
+	return dogDb;
 }
+
+
+module.exports = searchDogsByName = async (req, res) => {
+	try {
+		const { name } = req.query
+
+		const dogsFromApi = await getFromApi(name);
+		const dogsFromDataBase = await getFromDataBase(name)
+
+		const dogs = [...dogsFromApi, ...dogsFromDataBase];
+		
+		if (!dogs || dogs.length === 0) return res.status(404).json({message: "dogs not found" });
+		
+		return res.status(200).json(dogs)
+
+	} catch (error) {
+		return res.status(500).json({ error: 'Error al buscar los perros por nombre' });
+	}
 };
-
-
-const getDogDataBase = async (req, res) => {
-    const {name} = req.query;
-    
-};
-
-module.exports = getDogName = async (req, res) => {
-    try {
-
-    
-    } catch (error) {
-
-    };
-
-};
-    
+	

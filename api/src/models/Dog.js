@@ -42,7 +42,7 @@ module.exports = (sequelize) => {
 
     lifeSpan: {
       type: DataTypes.STRING,
-      defaultValue: 0,
+
     },
 
     bredFor: {
@@ -57,10 +57,10 @@ module.exports = (sequelize) => {
     },
 
     temperament: {
-      type: DataTypes.STRING,
+      type: DataTypes.UUID,
       allowNull: false,
       references: {
-        model: 'Temperaments',
+        model: 'temperaments',
         key: 'id' 
       }
     },

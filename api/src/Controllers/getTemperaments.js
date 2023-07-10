@@ -1,6 +1,6 @@
 const {API_KEY} = process.env;
 const axios = require('axios')
-const {Temperaments} = require('../db')
+const {Temperament} = require('../db')
 
 const Url= 'https://api.thedogapi.com/v1/breeds'
 
@@ -10,7 +10,7 @@ const Url= 'https://api.thedogapi.com/v1/breeds'
 
 module.exports = getTemperaments = async (req, res) => {
     try {
-        let temperaments = await Temperaments.findAll();
+        let temperaments = await Temperament.findAll();
 
         if (temperaments.length === 0) {
             const response = await axios.get(Url);
@@ -30,7 +30,7 @@ module.exports = getTemperaments = async (req, res) => {
             }
 
             const temperamentsArray = Array.from(allTemperaments);
-            await Temperaments.bulkCreate(
+            await Temperament.bulkCreate(
                 temperamentsArray.map((tempName) => ({ name: tempName }))
             );
 
