@@ -8,8 +8,7 @@ const URL = "https://api.thedogapi.com/v1/breeds/search?q=";
 
 const getFromApi = async (name) => {
 	try {
-		
-		
+	
 		const response = await axios.get( `${URL}${name}` )
 		
 		const dog = response.data;
@@ -31,6 +30,8 @@ const getFromDataBase = async (name) => {
 	
 	return dogDb;
 }
+
+//------------------Funcion General--------------- //
 
 
 module.exports = searchDogsByName = async (req, res) => {
