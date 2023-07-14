@@ -1,0 +1,23 @@
+
+.navContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+};
+
+.searchBar {
+    border-radius: 3em;
+    padding: 1em;
+  }
+  
+.button{
+    padding: 1em;
+    border: 1px solid black;
+    border-radius: 3em;
+};
+
+.serachButton{
+    padding: .5em;
+    border-radius: 3em;
+    border: solid 1px black;
+}

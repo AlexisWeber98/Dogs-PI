@@ -1,0 +1,14 @@
+.card {
+    background-color: antiquewhite;
+    border-radius: 3em;
+    border: solid 1px black;
+    padding: 1em;
+    ;
+  }
+  
+  .card .img {
+    border-radius: 3em;
+    width: 10em;
+    height:10em;
+  }
+  

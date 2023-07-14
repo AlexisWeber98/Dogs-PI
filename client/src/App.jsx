@@ -7,29 +7,21 @@ import Landing from "./views/Landing/Landing";
 import Detail from "./views/Detail/Detail";
 import Create from "./views/Create/Create";
 import SearchBar from "./components/SearchBar/SearchBar";
-import getDogs from "./helpers/getDogs";
+import Nav from "./components/Nav/Nav";
 
 
 const App = () => {
     const location = useLocation()
 
-
-    const [AllDogs,setAllDogs] = useState({})
-
-    useEffect(()=> {
-       const dogs = getDogs();
-       setAllDogs(dogs)
-    }, []);
-
-
-
     return(
         <div>
-        {location.pathname !== "/landing" && <SearchBar/>}
+
+{location.pathname !== "/" && location.pathname !== "/create" ? <Nav /> : null}
+
         <Routes>
-            <Route path="/landing" element= {<Landing/>}/>
-            <Route path="/home" element= {<Home AllDogs={AllDogs}/>}/>
-            <Route path="/home/:id" element={<Detail/>}/>
+            <Route path="/" element= {<Landing/>}/>
+            <Route path="/home" element= {<Home/>}/>
+            <Route path="/detail/:id" element={<Detail/>}/>
             <Route path="/create" element ={<Create/>}/>
         </Routes>
         </div>

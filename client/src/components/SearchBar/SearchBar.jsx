@@ -1,10 +1,8 @@
 const SearchBar = () => {
 return (
-    <div>
-    <h1>this is an searchbar</h1>
-    <form action="">
-        <input type="text" name="search" />
-    </form>
+    <div >
+        <input className="searchBar" type="text" name="search" placeholder="Search By Breed"/>
+        <button className="serachButton">Search</button>
     </div>
 )
 };
