@@ -2,7 +2,7 @@ import './Card.css'
 import { NavLink } from "react-router-dom";
 
 
-const Card = ({id,name, bred_for, reed_group, life_span, temperament, origin, image, weight, height}) => {
+const Card = ({id,name, bred_for, reed_group, life_span, temperament, origin, image, weight, height, created}) => {
     return (
         <div className='card'>
             <NavLink to={`/detail/${id}`}>

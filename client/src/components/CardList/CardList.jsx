@@ -3,7 +3,7 @@ import './CardList.css'
 
 const CardList = ({dogs}) => {
 
-    const dogCard = dogs?.map(({id,name, bred_for, reed_group, life_span, temperament, origin, image, weight, height}) => (
+    const dogCard = dogs?.map(({id,name, bred_for, reed_group, life_span, temperament, origin, image, weight, height, created}) => (
         <Card
         key={id}
         id={id}
@@ -16,6 +16,7 @@ const CardList = ({dogs}) => {
         weight={weight}
         height={height}
         image={image?.url}
+        created={created}
 
         />
     ))

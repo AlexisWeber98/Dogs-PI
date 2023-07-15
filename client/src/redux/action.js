@@ -1,4 +1,4 @@
-import { ALL_DOGS, GET_DETAIL, ORDER_BY_NAME, ORDER_BY_WEIGHT} from "./action-types";
+import { ALL_DOGS, FILTRED_CREATED, GET_DETAIL, ORDER_BY_NAME, ORDER_BY_WEIGHT} from "./action-types";
 import axios from 'axios'
 
 const URL = 'http://localhost:3001/dogs'
@@ -40,13 +40,20 @@ export const orderByName= (order) => {
         type: ORDER_BY_NAME,
         payload: order
     }
-}
+};
 
 
 export const orderByWeight = (order) => {
     return {
         type: ORDER_BY_WEIGHT,
         payload: order
+    }
+};
+
+export const filterCreated = (filtred) => {
+    return {
+        type: FILTRED_CREATED,
+        payload: filtred
     }
 }
 
