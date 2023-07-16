@@ -1,7 +1,7 @@
 import Card from "../Card/Card";
 import './CardList.css'
 
-const CardList = ({dogs}) => {
+const CardList = ({dogs, filterDogs}) => {
 
     const dogCard = dogs?.map(({id,name, bred_for, reed_group, life_span, temperament, origin, image, weight, height, created}) => (
         <Card

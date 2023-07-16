@@ -11,7 +11,7 @@ const Home = () => {
     const dispatch = useDispatch();
     
     const dogs = useSelector((state) => state.filteredDogs);
-    
+    const temperaments = useSelector((state) => state.allTemperaments);
 
 
     // ------------ Local States --------------//
@@ -19,13 +19,16 @@ const Home = () => {
     const [auxName, setAuxName] = useState(false);
     const [auxWeight, setAuxWeight] = useState(false);
     const [filtredCreated, setFiltredCreated] = useState(false);
-    const [temperamentFilter, setTemperamentFilter] = useState('');
-    const [temperaments, setTemperaments] = useState(null);
 
-    useEffect(()=> {
-        dispatch(getAllDogs());
-        dispatch(getTemperaments());
-    }, []);
+    
+
+    useEffect(() => {
+  dispatch(getAllDogs());
+  dispatch(getTemperaments());
+}, []);
+
+
+
     
 
     // ------------------ Handlers ----------------- //
@@ -46,13 +49,10 @@ const Home = () => {
         setFiltredCreated(true)
     };
 
-    ;
-
     const handleFilterByTemperament = (event) => {
-        const selectedTemperament = event.target.value;
-        dispatch(filterByTemperament(selectedTemperament));
-        setTemperamentFilter(selectedTemperament);
+        dispatch(filterByTemperament(event.target.value))
     };
+
 
 
 
@@ -82,11 +82,10 @@ const Home = () => {
 
                 </select>
 
-                <select onChange={handleFilterByTemperament} value={temperamentFilter}>
-                    <option value="">All</option>
-
-                    {temperaments?.map((temperament) => (
-                        <option key={temperament.id} value={temperament.name}>{temperament.name}</option>
+                <select onChange={handleFilterByTemperament}>
+                    <option value="All">All</option>
+                    {temperaments && temperaments.map((temperament) => (
+                    <option key={temperament.id} value={temperament.name}>{temperament.name}</option>
                     ))}
                 </select>
 

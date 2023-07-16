@@ -24,7 +24,8 @@ export const getDetail = (id) => {
 
     return async (dispatch) => {
         try {
-            const {data} = await axios.get(`${URL}/${id}`);
+            const response = await axios.get(`${URL_DOGS}/${id}`);
+            const data = response.data
             return dispatch ({
                 type : GET_DETAIL,
                 payload: data
@@ -61,10 +62,11 @@ export const filterCreated = (filtred) => {
 export const getTemperaments = () => {
     return async (dispatch) => {
         try{
-            const {data} = await axios.get(URL_TEMPERAMENTS);
+            const response = await axios.get(URL_TEMPERAMENTS);
+            const temperaments= response.data
             return dispatch ({
                 type: GET_TEMPERAMENTS,
-                payload: data})
+                payload: temperaments})
         } catch (error){
             error.message
         };

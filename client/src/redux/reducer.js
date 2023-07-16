@@ -3,10 +3,10 @@ import { ALL_DOGS, FILTRED_CREATED, GET_TEMPERAMENTS, ORDER_BY_NAME, ORDER_BY_WE
 let initialState = {
   AllDogs: [],
   filteredDogs: [],
-  orderBy: null, //inicializar orderBy
+  orderBy: null,
   orderDirection: 1,
   allTemperaments:[], 
-  temperamentFilter: null
+  
 };
 
 
@@ -43,7 +43,7 @@ const reducer = (state = initialState, {type,payload}) => {
         
       if (payload === 'Min') {
         orderByWeight = orderByWeightCopy.sort((a, b) => {
-          const weightA = parseInt(a.weight.metric.split(' - ')[0]);
+          const weightA = parseInt(a.weight.metric.split(' -')[0]);
           const weightB = parseInt(b.weight.metric.split(' - ')[0]);
             
           return weightA - weightB;
@@ -86,26 +86,31 @@ const reducer = (state = initialState, {type,payload}) => {
     case GET_TEMPERAMENTS:
       return {
         ...state,
-        allTemperaments: data
+        allTemperaments: payload
       }
 
       case FILTER_TEMPERAMENT:
-        let filterCopy = [...state.AllDogs];
-        let filteredDogs = filterCopy;
+
+      let filterTemp = null
+
+      if(payload === "All"){
+       
+          filterTemp = [...state.AllDogs]
         
-        if (payload) {
-          filteredDogs = filterCopy.filter((dog) => {
-            const dogTemperaments = dog.temperament.split(',').map((temp) => temp.trim().toLowerCase());
-            return dogTemperaments.includes(payload.toLowerCase());
-            }
-          );
-        }
-        
+      } else {
+        let dogsCopy = [...state.AllDogs];
+        filterTemp = dogsCopy.filter((dog) => {
+          const dogTemperaments = dog.temperament ? dog.temperament.split(',').map((temp) => temp.trim()) : [];
+          return filterTemp = dogTemperaments.includes(payload)
+        });
+      
         return {
           ...state,
-          filteredDogs,
-          temperamentFilter: payload, // Almacena el filtro por temperamento en el estado
+          filteredDogs: filterTemp
         };
+      
+      }
+      
         
           
       default:
