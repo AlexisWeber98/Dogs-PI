@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import validation from "./validation";
 import { useDispatch } from "react-redux";
 import { createDog } from "../../redux/action";
+import './Create.css'
 
 
 
@@ -38,7 +39,7 @@ const Create = ({temperaments}) => {
     
     //--------------- Handlers ---------------//
     
-   // Dentro de tu componente Create
+
 const handelSubmit = async (event) => {
     event.preventDefault();
     dispatch(createDog(dogDetails));
@@ -78,47 +79,48 @@ const handelSubmit = async (event) => {
 
 
     return (
-        <div>
+        <div className="cont">
 
+            <h1 className="title"> Create a New Breed </h1>
             <NavLink to='/home' className="button">Back</NavLink>
-            <h1> create a new breed </h1>
-            <div>
-                <form onSubmit={handelSubmit}>
-                    <label htmlFor="name">Name of breed:</label>
-                    <input type="text" name="name" placeholder="name" onChange={handelChange} value={dogDetails.name}></input>
+            <div className="formCont">
+                <form className="form" onSubmit={handelSubmit}>
+                    <label htmlFor="name">Name of breed : </label>
+                    <input className="input" type="text" name="name" placeholder="name" onChange={handelChange} value={dogDetails.name}></input>
                     <p>{errors.name}</p>
                     <br />
 
                     <label htmlFor="heightMin">Height Min (metric System)</label>
-                    <input type="number" name="heightMin" onChange={handelChange} value={dogDetails.heightMin}/>Cm
+                    <input className="inputNum" type="number" min="1" name="heightMin" onChange={handelChange} value={dogDetails.heightMin}/>Cm
                     <p>{errors.heightMin}</p>
                     <br />
 
-                    <label htmlFor="heightMax">Height Max</label>
-                    <input type="number" name="heightMax" onChange={handelChange} value={dogDetails.heightMax}/>Cm
+                    <label htmlFor="heightMax">Height Max : </label>
+                    <input className="inputNum" type="number" min="1" name="heightMax" onChange={handelChange} value={dogDetails.heightMax}/>Cm
                     <p>{errors.heightMax}</p>
                     <br />
                     
-                    <label htmlFor="weightMin">Weight Min</label>
-                    <input type="number" name="weightMin" onChange={handelChange} value={dogDetails.weightMin}/>Kg
+                    <label htmlFor="weightMin">Weight Min : </label>
+                    <input className="inputNum" type="number" min="1" name="weightMin" onChange={handelChange} value={dogDetails.weightMin}/>Kg
                     <p>{errors.weightMin}</p>
                     <br />
 
-                    <label htmlFor="weightMax">Weight Max</label>
-                    <input type="number" name="weightMax" onChange={handelChange} value={dogDetails.weightMax}/>Kg
+                    <label htmlFor="weightMax">Weight Max : </label>
+                    <input className="inputNum" type="number" min="1" name="weightMax" onChange={handelChange} value={dogDetails.weightMax}/>Kg
                     <p>{errors.weightMax}</p>
                     <br />
 
-                    <label htmlFor="lifeSpan">Life Span</label>
-                    <input type="text" name="lifeSpan" placeholder="ej: 9 - 12."onChange={handelChange} value={dogDetails.lifeSpan}/>years
-                    {errors.lifeSpan}
+                    <label htmlFor="lifeSpan">Life Span : </label>
+                    <input className="input" type="text" name="lifeSpan" placeholder="ej: 9 - 12."onChange={handelChange} value={dogDetails.lifeSpan}/>years
+                    <p>{errors.lifeSpan}</p>
                     <br />
 
-                    <label htmlFor="bredFor">Bred For</label>
-                    <input name="bredFor" type="text"  placeholder="Bred For" onChange={handelChange} value={dogDetails.bredFor}/>
+                    <label htmlFor="bredFor">Bred For : </label>
+                    <input className="input" name="bredFor" type="text"  placeholder="Bred For" onChange={handelChange} value={dogDetails.bredFor}/>
+                    <br />
                     <br />
                     
-                    <label htmlFor="breedGroup">Breed Gropup</label>
+                    <label htmlFor="breedGroup">Breed Gropup : </label>
                     <select name="breedGroup" defaultValue="Select" onChange={handelChange}>
                         <option value="Undefined">Undefined</option>
                         <option value="Companionship">Companionship</option>
@@ -133,8 +135,9 @@ const handelSubmit = async (event) => {
                         <option value="Working">Working</option>
                     </select>
                     <br />
+                    <br />
 
-                    <label htmlFor="temperament">Temperament</label>
+                    <label htmlFor="temperament">Temperament : </label>
                     <select name="temperament" onChange={handelChange}>
                         <option value="All">All</option>
                         {temperaments && temperaments.map((temperament) => (
@@ -144,13 +147,14 @@ const handelSubmit = async (event) => {
                     </select>
                     <p>{errors.temperament}</p>
                     <br />
+                    <br />
 
-                    <label htmlFor="image"> Image</label>
-                    <input name="image" type="text" placeholder="URL" value={dogDetails.image} onChange={handelChange}/>
+                    <label htmlFor="image">Image : </label>
+                    <input className="input" name="image" type="text" placeholder="URL" value={dogDetails.image} onChange={handelChange}/>
                     <p>{errors.image? errors.image:null}</p>
                     <br />
 
-                    <button type="submit" disabled={!dogDetails.name||
+                    <button type="submit" className="submit" disabled={!dogDetails.name||
                         errors.name || errors.heightMax || errors.heightMin || errors.weightMax || errors.weightMin || errors.lifeSpan || errors.temperament || errors.image
                         }>Create</button>
                     

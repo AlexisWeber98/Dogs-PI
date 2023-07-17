@@ -1,0 +1,43 @@
+.title{
+    font-size: 2em
+}
+
+
+.formCont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 3em;
+    font-size: 1.2em
+}
+
+.form{
+    padding: 1em;
+    border: solid black 1px;
+}
+
+.input{
+    font-size: .9em;
+}
+.inputNum {
+    font-size: .9em;
+    width: 4em;
+}
+
+p{
+    font-size: .8em;
+    color:red
+}
+
+.submit{
+    
+    margin-left: 7em;
+    padding: 1em;
+    border:solid 1px black;
+    color:white;
+    background-color:#03A9F4 ;
+    text-decoration: none;
+    font-size: 1em;
+    cursor: pointer;
+    transition:.3s;
+}
