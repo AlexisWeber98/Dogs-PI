@@ -1,4 +1,4 @@
-import { ALL_DOGS, FILTRED_CREATED, GET_TEMPERAMENTS, ORDER_BY_NAME, ORDER_BY_WEIGHT, FILTER_TEMPERAMENT } from "./action-types";
+import { ALL_DOGS, FILTRED_CREATED, GET_TEMPERAMENTS, ORDER_BY_NAME, ORDER_BY_WEIGHT, FILTER_TEMPERAMENT, SEARCH } from "./action-types";
 
 let initialState = {
   AllDogs: [],
@@ -65,23 +65,23 @@ const reducer = (state = initialState, {type,payload}) => {
       filteredDogs: orderByWeight,
       orderBy: 'weight', 
       orderDirection: payload === 'Min' ? 1 : -1
-    };
+     };
         
     case FILTRED_CREATED:
-  let filterDogs = null;
-
-  if (payload === "Created") {
-    filterDogs = state.AllDogs.filter((dog) => dog.created);
-  } else if (payload === "Existing") {
-    filterDogs = state.AllDogs.filter((dog) => !dog.created);
-  } else {
-    filterDogs = state.AllDogs;
-  }
-
-  return {
-    ...state,
-    filteredDogs: filterDogs,
-  };
+      let filterDogs = null;
+      
+      if (payload === "Created") {
+        filterDogs = state.AllDogs.filter((dog) => dog.created);
+      } else if (payload === "Existing") {
+        filterDogs = state.AllDogs.filter((dog) => !dog.created);
+      } else {
+        filterDogs = state.AllDogs;
+      }
+      
+      return {
+        ...state,
+        filteredDogs: filterDogs,
+      };
 
           
 
@@ -89,9 +89,9 @@ const reducer = (state = initialState, {type,payload}) => {
       return {
         ...state,
         allTemperaments: payload
-      }
+      };
 
-      case FILTER_TEMPERAMENT:
+    case FILTER_TEMPERAMENT:
 
       let filterTemp = null
 
@@ -108,17 +108,24 @@ const reducer = (state = initialState, {type,payload}) => {
           return filterTemp = dogTemperaments.includes(payload)
         });
       
-        return {
-          ...state,
-          filteredDogs: filterTemp
-        };
-      
+      return {
+        ...state,
+        filteredDogs: filterTemp
       };
+    };
+
+    case SEARCH:
+
+    console.log(payload);
+      return {
+        ...state,
+        filteredDogs: payload
+      }
           
-      default:
-      return { ...state};
-    }
-  };
+    default:
+    return { ...state};
+  }
+};
 
 
 export default reducer;

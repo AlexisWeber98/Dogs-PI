@@ -17,9 +17,6 @@ const getDogs = async (req, res) => {
 
     }});
     
-
-    console.log(arrayFromDB);
-    
     const dogsFromDB = arrayFromDB.map(async (dog) => {
       let findTemperament = null;
 
@@ -51,8 +48,6 @@ const getDogs = async (req, res) => {
     const resolvedDogsFromDB = await Promise.all(dogsFromDB)
 
     const dogs = [...dogsFromApi, ...resolvedDogsFromDB];
-
-   
 
     return res.status(200).json(dogs);
   } catch (error) {

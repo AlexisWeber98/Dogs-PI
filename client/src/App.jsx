@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import { getTemperaments } from "./redux/action";
+import { getTemperaments, onSearch } from "./redux/action";
 import { useDispatch, useSelector } from "react-redux";
 import Home from './views/Home/Home'
 import Landing from "./views/Landing/Landing";
@@ -11,10 +11,12 @@ import Nav from "./components/Nav/Nav";
 
 
 const App = () => {
+
     const location = useLocation();
     const dispatch = useDispatch()
     const temperaments = useSelector((state) => state.allTemperaments);
 
+    
    
 
     useEffect(()=> {
@@ -23,7 +25,7 @@ const App = () => {
     return(
         <div>
 
-{location.pathname !== "/" && location.pathname !== "/create" ? <Nav /> : null}
+{location.pathname !== "/" && location.pathname !== "/create" ? <Nav/> : null}
 
         <Routes>
             <Route path="/" element= {<Landing/>}/>

@@ -1,8 +1,9 @@
-import { ALL_DOGS, FILTRED_CREATED, GET_DETAIL, ORDER_BY_NAME, ORDER_BY_WEIGHT, FILTER_TEMPERAMENT, GET_TEMPERAMENTS} from "./action-types";
+import { ALL_DOGS, FILTRED_CREATED, GET_DETAIL, ORDER_BY_NAME, ORDER_BY_WEIGHT, FILTER_TEMPERAMENT, GET_TEMPERAMENTS, SEARCH} from "./action-types";
 import axios from 'axios'
 
 const URL_DOGS = 'http://localhost:3001/dogs'
 const URL_TEMPERAMENTS= 'http://localhost:3001/temperaments'
+const URL_NAME = "http://localhost:3001/dogs/name?name="
 
 export const getAllDogs = () => {
 
@@ -102,4 +103,20 @@ export const filterByTemperament = (temperament) => {
         return error.message;
        }
     }
-  }
+  };
+
+  export const onSearch = (name) => {
+    return async (dispatch) => {
+      try {
+        const { data } = await axios.get(`${URL_NAME}${name}`);
+        console.log(data);
+        return dispatch({
+          type: SEARCH,
+          payload: data
+        });
+      } catch (error) {
+        throw new Error(error.message); 
+      }
+    };
+};
+  
