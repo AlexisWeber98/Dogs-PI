@@ -1,0 +1,27 @@
+.content {
+    margin-top: 5em;
+    display: flex;
+    align-items: center;
+  }
+  
+  .imageContainer {
+    display: grid;
+    float: left;
+  }
+  
+  .image {
+    width: 80%; /* Tamaño de la imagen */
+    height: auto; /* Ajustar la altura automáticamente */
+  }
+  
+  .detali {
+    float: right;
+    font-size: 18px;
+    margin-right: 1em;
+  }
+
+  h3{
+    margin:1em
+  }
+  
+  
