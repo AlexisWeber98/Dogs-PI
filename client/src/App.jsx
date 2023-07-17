@@ -16,7 +16,6 @@ const App = () => {
     const dispatch = useDispatch()
     const temperaments = useSelector((state) => state.allTemperaments);
 
-    
    
 
     useEffect(()=> {
@@ -25,7 +24,7 @@ const App = () => {
     return(
         <div>
 
-{location.pathname !== "/" && location.pathname !== "/create" ? <Nav/> : null}
+{location.pathname !== "/" && location.pathname !== "/create" ? <Nav onSearch= {onSearch}/> : null}
 
         <Routes>
             <Route path="/" element= {<Landing/>}/>

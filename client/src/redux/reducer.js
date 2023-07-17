@@ -38,34 +38,34 @@ const reducer = (state = initialState, {type,payload}) => {
         orderDirection: payload === 'A' ? 1 : -1, //almacenar la dirección del ordenamiento en el estado
       };
       
-    case ORDER_BY_WEIGHT:
-      let orderByWeightCopy = [...state.filteredDogs]; 
-      let orderByWeight = null;
-        
-      if (payload === 'Min') {
-        orderByWeight = orderByWeightCopy.sort((a, b) => {
-          const weightA = parseInt(a.weight.metric.split(' -')[0]);
-          const weightB = parseInt(b.weight.metric.split(' - ')[0]);
-            
-          return weightA - weightB;
-        });
-        
+      case ORDER_BY_WEIGHT:
+        let orderByWeightCopy = [...state.filteredDogs];
+        let orderByWeight = null;
+      
+        if (payload === 'Min') {
+          orderByWeight = orderByWeightCopy.sort((a, b) => {
+            const weightA = a.weight && a.weight.metric ? parseInt(a.weight.metric.split(' - ')[0]) : 0;
+            const weightB = b.weight && b.weight.metric ? parseInt(b.weight.metric.split(' - ')[0]) : 0;
+      
+            return weightA - weightB;
+          });
+      
         } else {
           orderByWeight = orderByWeightCopy.sort((a, b) => {
-          const weightA = parseInt(a.weight.metric.split(' - ')[1]);
-          const weightB = parseInt(b.weight.metric.split(' - ')[1]);
-            
-          return weightA - weightB;
-          }
-        );
-      }
-        
-      return {
-      ...state,
-      filteredDogs: orderByWeight,
-      orderBy: 'weight', 
-      orderDirection: payload === 'Min' ? 1 : -1
-     };
+            const weightA = a.weight && a.weight.metric ? parseInt(a.weight.metric.split(' - ')[1]) : 0;
+            const weightB = b.weight && b.weight.metric ? parseInt(b.weight.metric.split(' - ')[1]) : 0;
+      
+            return weightA - weightB;
+          });
+        }
+      
+        return {
+          ...state,
+          filteredDogs: orderByWeight,
+          orderBy: 'weight',
+          orderDirection: payload === 'Min' ? 1 : -1
+        };
+      
         
     case FILTRED_CREATED:
       let filterDogs = null;

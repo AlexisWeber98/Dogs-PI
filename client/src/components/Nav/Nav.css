@@ -1,23 +1,28 @@
 
-.navContainer{
+.container{
     display: flex;
-    justify-content: space-between;
+    font-size: 1em;
+    justify-content: center;
     align-items: center;
-};
-
-.searchBar {
-    border-radius: 3em;
-    padding: 1em;
-  }
-  
-.button{
-    padding: 1em;
-    border: 1px solid black;
-    border-radius: 3em;
-};
-
-.serachButton{
-    padding: .5em;
-    border-radius: 3em;
-    border: solid 1px black;
 }
+
+h1{
+  text-align: center;
+}
+
+.my-input {
+   font-size: 1em;
+   padding: 1em;
+   justify-items: center
+}
+.button-create{
+    margin-left: 10em;
+   
+}
+
+.button:hover{
+padding: 1.2em;
+}
+
+
+

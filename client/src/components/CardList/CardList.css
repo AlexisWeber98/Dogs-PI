@@ -1,10 +1,24 @@
 
-.cardList{
-    background-color: grey ;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    padding: 1em;
-    border-radius: 3em;
-    border: solid 1px black;
 
-}
+
+.cardList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-decoration: none;
+  }
+  
+  .card {
+    width: 300px;
+    margin: 10px;
+    flex-direction: column;
+    text-decoration: none;
+    border: 1px solid grey;
+  }
+  
+  .card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  
