@@ -11,7 +11,8 @@ module.exports = (sequelize) => {
     },
     image: {
       type: DataTypes.STRING,
-      allowNull: true
+      allowNull: true,
+      defaultValue: "https://www.kuwaittimes.com/wp-content/uploads/2023/04/1441.jpg"
     },
     
     name: {

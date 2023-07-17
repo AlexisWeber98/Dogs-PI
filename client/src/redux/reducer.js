@@ -17,7 +17,8 @@ const reducer = (state = initialState, {type,payload}) => {
             
     return {
         ...state,
-        AllDogs: payload };
+        AllDogs: payload,
+      filteredDogs: payload};
 
 
     case ORDER_BY_NAME:
@@ -95,8 +96,10 @@ const reducer = (state = initialState, {type,payload}) => {
 
       if(payload === "All"){
        
-          filterTemp = [...state.AllDogs]
-        
+        return {
+          ...state,
+          filteredDogs: [...state.AllDogs]
+          }
       } else {
         let dogsCopy = [...state.AllDogs];
         filterTemp = dogsCopy.filter((dog) => {
@@ -109,9 +112,7 @@ const reducer = (state = initialState, {type,payload}) => {
           filteredDogs: filterTemp
         };
       
-      }
-      
-        
+      };
           
       default:
       return { ...state};

@@ -6,12 +6,11 @@ import './Home.css'
 import { getAllDogs, orderByName, orderByWeight, filterCreated, filterByTemperament, getTemperaments } from "../../redux/action";
 
 
-const Home = () => {
+const Home = ({temperaments}) => {
 
     const dispatch = useDispatch();
     
     const dogs = useSelector((state) => state.filteredDogs);
-    const temperaments = useSelector((state) => state.allTemperaments);
 
 
     // ------------ Local States --------------//
@@ -24,7 +23,7 @@ const Home = () => {
 
     useEffect(() => {
   dispatch(getAllDogs());
-  dispatch(getTemperaments());
+  ;
 }, []);
 
 

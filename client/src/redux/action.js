@@ -79,4 +79,27 @@ export const filterByTemperament = (temperament) => {
       payload: temperament,
     };
   };
-  
+
+  export const createDog = (dogData) => {
+    const {name, image, heightMin, heightMax, weightMin, weightMax, lifeSpan, bredFor, breedGroup, temperament, created } = dogData;
+
+    return async () =>  {
+       try {
+        await axios.post(URL_DOGS, {
+        name,
+        image,
+        heightMin: Number(heightMin),
+        heightMax: Number(heightMax),
+        weightMin: Number(weightMin),
+        weightMax: Number(weightMax),
+        lifeSpan,
+        bredFor,
+        breedGroup,
+        temperament,
+        created
+        })
+       } catch (error) {
+        return error.message;
+       }
+    }
+  }
