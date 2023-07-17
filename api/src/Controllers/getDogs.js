@@ -1,5 +1,5 @@
 require('dotenv').config();
-const { Dog } = require('../db');
+const { Dog, Temperament } = require('../db');
 const axios = require('axios');
 const { API_KEY } = process.env;
 
@@ -10,28 +10,49 @@ const getDogs = async (req, res) => {
     const response = await axios.get(URL);
     const dogsFromApi = response.data;
 
-    const arrayFromDB = await Dog.findAll();
+    const arrayFromDB = await Dog.findAll({include: {
+      model: Temperament,
+      atributes: ["name"],
+      through: {atributes:[]}
+
+    }});
     
-    const dogsFromDB = arrayFromDB.map((dog) => {
+
+    console.log(arrayFromDB);
+    
+    const dogsFromDB = arrayFromDB.map(async (dog) => {
+      let findTemperament = null;
+
+      if (dog.temperament) {
+        findTemperament = await Temperament.findOne({
+          where: {
+            id: dog.temperament,
+          },
+        });
+      }
+
+      const height = `${dog.heightMin} - ${dog.heightMax} cm`;
+      const weight = `${dog.weightMin} - ${dog.weightMax} kg`;
+
       return {
-        id: dog.id,
-        image: dog.image,
+        id : dog.id,
         name: dog.name,
-        heightMin: dog.heightMin,
-        heightMax: dog.heightMax,
-        weightMin: dog.weightMin,
-        weightMax: dog.weightMax,
+        image: dog.image,
         lifeSpan: dog.lifeSpan,
+        height: height,
+        weight: weight,
         bredFor: dog.bredFor,
         breedGroup: dog.breedGroup,
-        temperament: dog.temperament,
-        created: true,
+        temperament: findTemperament?.name,
+        created: dog.created
       };
     });
 
-    const dogs = [...dogsFromApi, ...dogsFromDB];
+    const resolvedDogsFromDB = await Promise.all(dogsFromDB)
 
-    console.log(dogs);
+    const dogs = [...dogsFromApi, ...resolvedDogsFromDB];
+
+   
 
     return res.status(200).json(dogs);
   } catch (error) {

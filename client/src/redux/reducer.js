@@ -68,21 +68,22 @@ const reducer = (state = initialState, {type,payload}) => {
     };
         
     case FILTRED_CREATED:
-      let filterDogs = null;
+  let filterDogs = null;
+
+  if (payload === "Created") {
+    filterDogs = state.AllDogs.filter((dog) => dog.created);
+  } else if (payload === "Existing") {
+    filterDogs = state.AllDogs.filter((dog) => !dog.created);
+  } else {
+    filterDogs = state.AllDogs;
+  }
+
+  return {
+    ...state,
+    filteredDogs: filterDogs,
+  };
+
           
-      if (payload === "Created") {
-        filterDogs = state.AllDogs.filter((dog) => dog.created);
-        } else if (payload === "Existing") {
-          filterDogs = state.AllDogs.filter((dog) => !dog.created);
-        } else {
-        filterDogs = state.AllDogs;
-      }
-          
-      return {
-        ...state,
-        filteredDogs: filterDogs,
-        temperamentFilter: null
-      };
 
     case GET_TEMPERAMENTS:
       return {

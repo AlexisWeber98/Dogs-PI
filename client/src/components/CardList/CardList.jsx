@@ -10,7 +10,7 @@ const CardList = ({ dogs, filterDogs }) => {
         bred_for={bred_for}
         reed_group={reed_group}
         life_span={life_span}
-        temperament={temperament && temperament.name ? temperament.name : temperament}
+        temperament={temperament}
         origin={origin}
         weight={weight}
         height={height}

@@ -56,7 +56,7 @@ const getDetailDB = async (id) => {
           findTemperament = await Temperament.findOne({where: {
             id: dog.temperament
           }})
-        }
+        };
 
         const dogDetail = {
             id : dog.id,
@@ -65,7 +65,7 @@ const getDetailDB = async (id) => {
             lifeSpan: dog.lifeSpan,
             height: `${dog.heightMin}-${dog.heightMax}`,
             weight: `${dog.weightMin}-${dog.weightMax}`,
-            bredFor: dog. bredFor,
+            bredFor: dog.bredFor,
             breedGroup: dog.breedGroup,
             temperament: findTemperament.name,
             create: dog.create
