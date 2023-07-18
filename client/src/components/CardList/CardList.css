@@ -9,11 +9,12 @@
   }
   
   .card {
+    background-color: aliceblue;
     width: 300px;
     margin: 10px;
     flex-direction: column;
     text-decoration: none;
-    border: 1px solid grey;
+    border: 1px solid black;
   }
   
   .card img {

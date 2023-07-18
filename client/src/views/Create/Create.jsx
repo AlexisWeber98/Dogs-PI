@@ -13,7 +13,7 @@ const Create = ({temperaments}) => {
 
     const [ dogDetails, setDogDetails ] = useState({
         name: "",
-        image: "",
+        image: "https://www.kuwaittimes.com/wp-content/uploads/2023/04/1441.jpg",
         heightMin: 0,
         heightMax: 0,
         weightMin: 0,
@@ -21,7 +21,7 @@ const Create = ({temperaments}) => {
         lifeSpan: "",
         bredFor: "",
         breedGroup: "",
-        temperament: "",
+        temperament: [],
         created: true,
 
     });
@@ -55,7 +55,7 @@ const handelSubmit = async (event) => {
       lifeSpan: "",
       bredFor: "",
       breedGroup: "",
-      temperament: "",
+      temperament: [],
       created: true,
     });
   
@@ -73,11 +73,23 @@ const handelSubmit = async (event) => {
         validation(dogDetails,setErrors))
     };
 
+    const handleAddTemperament = (event) => {
+        event.preventDefault();
+        setDogDetails({
+          ...dogDetails,
+          temperament: [...dogDetails.temperament, event.target.value],
+        });
+      };
+    
+      const handleRemoveTemperament = (temperament) => {
+        setDogDetails({
+          ...dogDetails,
+          temperament: dogDetails.temperament.filter((temp) => temp !== temperament),
+        });
+      };
+      
 
-
-
-
-
+    
     return (
         <div className="cont">
 
@@ -137,17 +149,31 @@ const handelSubmit = async (event) => {
                     <br />
                     <br />
 
-                    <label htmlFor="temperament">Temperament : </label>
-                    <select name="temperament" onChange={handelChange}>
-                        <option value="All">All</option>
+                    <label htmlFor="temperament">Temperament :</label>
+                    <select name="temperament" multiple onChange={handleAddTemperament}>
                         {temperaments && temperaments.map((temperament) => (
-                        <option key={temperament.id} value={temperament.name}>{temperament.name}</option>
-                        ))};
-                    
+                        <option key={temperament.id} value={temperament.name}>
+                            {temperament.name}
+                        </option>
+                        ))}
                     </select>
                     <p>{errors.temperament}</p>
+                    
+                    {dogDetails.temperament.length > 0 && (
+                     <div className="selectedTemperaments">
+                        {dogDetails.temperament.map((temperament) => (
+                         <div className="selectedTemperament" key={temperament}>
+                            <span>{temperament}</span>
+                            <button
+                            type="button"
+                            onClick={() => handleRemoveTemperament(temperament)}
+                            >X</button>
+                         </div>
+                        ))}
+                     </div>
+                    )}
                     <br />
-                    <br />
+                     <br />
 
                     <label htmlFor="image">Image : </label>
                     <input className="input" name="image" type="text" placeholder="URL" value={dogDetails.image} onChange={handelChange}/>
@@ -156,13 +182,13 @@ const handelSubmit = async (event) => {
 
                     <button type="submit" className="submit" disabled={!dogDetails.name||
                         errors.name || errors.heightMax || errors.heightMin || errors.weightMax || errors.weightMin || errors.lifeSpan || errors.temperament || errors.image
-                        }>Create</button>
+                    }>Create</button>
                     
                 </form>
             </div>
         </div>
     )
-} ;
+};
 
 
 export default Create;

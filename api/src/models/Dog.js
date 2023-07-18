@@ -1,75 +1,60 @@
 const { DataTypes } = require('sequelize');
-// Exportamos una funcion que define el modelo
-// Luego le injectamos la conexion a sequelize.
+
 module.exports = (sequelize) => {
-  // defino el modelo
   sequelize.define('dog', {
-    id:{
-      type :DataTypes.UUID,
-      primaryKey:true,
-      defaultValue: DataTypes.UUIDV4
+    id: {
+      type: DataTypes.UUID,
+      primaryKey: true,
+      defaultValue: DataTypes.UUIDV4,
     },
     image: {
       type: DataTypes.STRING,
       allowNull: true,
       defaultValue: "https://www.kuwaittimes.com/wp-content/uploads/2023/04/1441.jpg"
     },
-    
     name: {
       type: DataTypes.STRING,
       unique: false,
       allowNull: false
     },
-    
-    heightMin:{
+    heightMin: {
       type: DataTypes.FLOAT,
-      allowNull:false
+      allowNull: false
     },
-
     heightMax: {
       type: DataTypes.FLOAT,
-      allowNull:false
+      allowNull: false
     },
-
-    weightMin:{
+    weightMin: {
       type: DataTypes.FLOAT,
-      allowNull:false
+      allowNull: false
     },
-
-    weightMax:{
+    weightMax: {
       type: DataTypes.FLOAT,
-      allowNull:false
+      allowNull: false
     },
-
     lifeSpan: {
-      type: DataTypes.STRING,
-
+      type: DataTypes.STRING
     },
-
     bredFor: {
       type: DataTypes.STRING,
-      defaultValue: "Unknow",
+      defaultValue: "Unknown",
       allowNull: true
     },
-
-    breedGroup:{
-      type:DataTypes.ENUM('Domestic', "Working", "Mixed", "Toy", "Hound", "Terrier", "Non-Sporting", "Companionship", "Sporting", "Herding", "Undefined"),
-      allowNull: false,
+    breedGroup: {
+      type: DataTypes.ENUM('Domestic', 'Working', 'Mixed', 'Toy', 'Hound', 'Terrier', 'Non-Sporting', 'Companionship', 'Sporting', 'Herding', 'Undefined'),
+      allowNull: false
     },
-
     temperament: {
-      type: DataTypes.UUID,
-      allowNull: false,
-      references: {
-        model: 'temperaments',
-        key: 'id' 
-      }
+      type: DataTypes.ARRAY(DataTypes.STRING),
+      allowNull: false
     },
-    
     created: {
       type: DataTypes.BOOLEAN,
-    defaultValue:false  
-    },
- 
-  }, { timestamps: false});
+      defaultValue: false
+    }
+  }, {
+    timestamps: false
+  });
 };
+

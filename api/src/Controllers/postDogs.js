@@ -1,16 +1,14 @@
-const { Dog, Temperament} = require('../db');
-
+const { Dog, Temperament } = require('../db');
 
 module.exports = postDogs = async (req, res) => {
   try {
     const {
-      id,
       name,
       image,
       heightMin,
       heightMax,
-      weightMax,
       weightMin,
+      weightMax,
       lifeSpan,
       bredFor,
       temperament,
@@ -18,49 +16,51 @@ module.exports = postDogs = async (req, res) => {
     } = req.body;
 
     console.log(req.body);
-    let temperamentRecord = [];
 
+    let imagen = image
+    if (!imagen) imagen = "https://www.kuwaittimes.com/wp-content/uploads/2023/04/1441.jpg"
     if (!name || !heightMin || !heightMax || !weightMin || !weightMax) {
       return res.status(400).json({ message: "All fields are required" });
     }
 
+    let temperamentRecords = [];
 
-    if (temperament) temperamentRecord = await Temperament.findOne({
-      where: {
-        name: temperament
-      }
-    });
-        else{
-          return res.status(400).json({message:"no se encontro temperament"} )
-        };
-
-
-        
-        const dog = await Dog.findOrCreate({ where:{
-          name,
-          image,
-          heightMin,
-          heightMax,
-          weightMin,
-          weightMax,
-          lifeSpan,
-          bredFor,
-          breedGroup,
-          created: true,
+    if (temperament && Array.isArray(temperament)) {
+      temperamentRecords = await Temperament.findAll({
+        where: {
+          name: temperament,
         },
-        defaults: {
-          temperament: temperamentRecord? temperamentRecord.id : null
-        }
       });
-      
-      if (temperamentRecord) {
-        await dog.addTemperaments(temperamentRecord.id);
-      } else {
-        return res.status(400).json({message:"no se pudo agregar temperamento"})
-      };
-  
+    }
+
+    const dog = await Dog.create({
+      name,
+      image,
+      heightMin,
+      heightMax,
+      weightMin,
+      weightMax,
+      lifeSpan,
+      bredFor,
+      breedGroup,
+      temperament: temperamentRecords.map((record) => record.id),
+      created: true,
+    });
+
+    for (let i = 0; i < temperamentRecords.length; i++) {
+      await dog.addTemperament(temperamentRecords[i]);
+    }
+
     return res.status(200).json(dog);
   } catch (error) {
     res.status(500).send(error.message);
   }
 };
+
+
+
+
+
+
+
+

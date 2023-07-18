@@ -61,9 +61,15 @@ justify-items: center;
 }
 
 .pagination{
+    
     text-align: center;
     justify-content: space-between;
     margin: 1em;
+}
+.pagination p{
+    font-size: 1.5em;
+    padding: .5em;
+    background-color: aliceblue;
 }
 
 .pages {
