@@ -12,9 +12,6 @@ const Home = ({temperaments}) => {
     const [currentPage, setCurrentPage] = useState(1);
     const dogsPerPage = 8;
 
-    useEffect(() => {
-        dispatch(getAllDogs());
-    }, []);
 
     // ------------ Handlers --------------------//
 

@@ -10,29 +10,22 @@ const getDogs = async (req, res) => {
     const response = await axios.get(URL);
     const dogsFromApi = response.data;
 
-    const arrayFromDB = await Dog.findAll({include: {
-      model: Temperament,
-      atributes: ["name"],
-      through: {atributes:[]}
-
-    }});
-    
-    const dogsFromDB = arrayFromDB.map(async (dog) => {
-      let findTemperament = null;
-
-      if (dog.temperament) {
-        findTemperament = await Temperament.findOne({
-          where: {
-            id: dog.temperament,
-          },
-        });
+    const dogsFromDB = await Dog.findAll({
+      include: {
+        model: Temperament,
+        attributes: ["name"],
+        through: { attributes: [] }
       }
+    });
 
+    const dogs = dogsFromDB.map((dog) => {
       const height = `${dog.heightMin} - ${dog.heightMax} cm`;
       const weight = `${dog.weightMin} - ${dog.weightMax} kg`;
 
+      const temperaments = dog.temperaments?.map((temperament) => temperament.name).join(", ") || '';
+
       return {
-        id : dog.id,
+        id: dog.id,
         name: dog.name,
         image: dog.image,
         lifeSpan: dog.lifeSpan,
@@ -40,20 +33,21 @@ const getDogs = async (req, res) => {
         weight: weight,
         bredFor: dog.bredFor,
         breedGroup: dog.breedGroup,
-        temperament: findTemperament?.name,
+        temperament: temperaments,
         created: dog.created
       };
     });
 
-    const resolvedDogsFromDB = await Promise.all(dogsFromDB)
+    const allDogs = [...dogsFromApi, ...dogs];
 
-    const dogs = [...dogsFromApi, ...resolvedDogsFromDB];
-
-    return res.status(200).json(dogs);
+    return res.status(200).json(allDogs);
   } catch (error) {
     return res.status(500).send(error.message);
   }
 };
+
+
+
 
 module.exports = {
   getDogs,

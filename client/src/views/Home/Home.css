@@ -44,7 +44,8 @@ justify-items: center;
     text-decoration: none;
     font-size: 1em;
     cursor: pointer;
-    transition:.3s
+    transition:.3s;
+    margin-top: .5em
 };
 
 .button:hover {
@@ -69,7 +70,7 @@ justify-items: center;
 .pagination p{
     font-size: 1.5em;
     padding: .5em;
-    background-color: aliceblue;
+    background-color:beige;
 }
 
 .pages {

@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import { getTemperaments, onSearch } from "./redux/action";
+import { getAllDogs, getTemperaments, onSearch } from "./redux/action";
 import { useDispatch, useSelector } from "react-redux";
 import Home from './views/Home/Home'
 import Landing from "./views/Landing/Landing";
@@ -20,6 +20,7 @@ const App = () => {
 
     useEffect(()=> {
         dispatch(getTemperaments())
+        dispatch(getAllDogs())
     }, [])
     return(
         <div>

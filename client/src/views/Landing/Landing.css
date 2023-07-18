@@ -4,3 +4,61 @@ background-image:url(../../assets/pxfuel.jpg);
 background-repeat: no-repeat;
 background-size: cover;
 }
+
+.buttonEnter{
+    padding: 1em;
+    border:solid 1px black;
+    color:white;
+    background-color:#03A9F4 ;
+    text-decoration: none;
+    font-size: 1.3em;
+    cursor: pointer;
+    transition:.3s;
+    margin-top: .5em;
+text-align: center;
+justify-content: center;}
+.block{
+    display:flex;
+    columns:auto;
+}
+
+.imageLandingContainer {
+    width: 25em;
+    height: auto;
+    overflow: hidden;
+  }
+  
+  .imageLanding {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+.buttonContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.buttonContainer button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    font-size: 16px;
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.buttonContainer button:hover {
+    background-color: #ebebeb;
+}
+
+.buttonContainer button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.nameLanding{
+    background-color: beige;
+}

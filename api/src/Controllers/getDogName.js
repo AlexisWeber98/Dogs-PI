@@ -2,16 +2,16 @@ const { Dog, Temperament } = require("../db");
 const axios = require("axios");
 const { Op } = require("sequelize");
 
-const URL = "https://api.thedogapi.com/v1/breeds/search?q=";
+const URL = "https://api.thedogapi.com/v1/breeds/";
 
 // ---------------- Funcion para buscar en la API ----------------------//
 
 const getFromApi = async (name) => {
 	try {
 	
-		const response = await axios.get( `${URL}${name}` )
+		const response = await axios.get(URL)
 		
-		const dog = response.data;
+		const dog = response.data.filter((dog)=>dog.name.toLowerCase().includes(name.toLowerCase()))
 		
 		return dog
 	} catch (error) {

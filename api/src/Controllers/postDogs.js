@@ -35,7 +35,7 @@ module.exports = postDogs = async (req, res) => {
 
     const dog = await Dog.create({
       name,
-      image,
+      image: imagen,
       heightMin,
       heightMax,
       weightMin,

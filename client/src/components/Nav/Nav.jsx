@@ -15,14 +15,16 @@ const Nav = () => {
   };
 
   const handleSubmit = () => {
-    dispatch(onSearch(name))
+    dispatch(onSearch(name));
+    setName(" ")
   };
 
   return (
-    <div>
+    <div className="bodyNav">
       
       <h1>World Of Dogs</h1>
       <div className="container">
+
         <div className="searchBar">
           <button className="button" onClick={() => handleSubmit(name)}>Search</button>
           <input className="my-input" type="text" name="search" placeholder="Search By Breed" onChange={handleChange} />

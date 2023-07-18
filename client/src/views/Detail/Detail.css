@@ -10,18 +10,22 @@
   }
   
   .image {
-    width: 80%; /* Tamaño de la imagen */
-    height: auto; /* Ajustar la altura automáticamente */
+    width: 90%; 
+    height: auto; 
+    border-bottom: 1px grey solid;
+    border-right: 1px grey solid;
   }
   
   .detali {
     float: right;
     font-size: 18px;
     margin-right: 1em;
+    background-color: beige;
   }
 
   h3{
-    margin:1em
+    margin:1em;
+    
   }
   
   

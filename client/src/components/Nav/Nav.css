@@ -1,5 +1,11 @@
-
+.bodyNav{
+  margin-top: none;
+  padding: 1em;
+background-color: beige;
+border-bottom: 1px solid black ;
+}
 .container{
+ 
     display: flex;
     font-size: 1em;
     justify-content: center;
@@ -8,6 +14,7 @@
 
 h1{
   text-align: center;
+  font-size: 2.5em;
 }
 
 .my-input {

@@ -13,7 +13,7 @@ const Create = ({temperaments}) => {
 
     const [ dogDetails, setDogDetails ] = useState({
         name: "",
-        image: "https://www.kuwaittimes.com/wp-content/uploads/2023/04/1441.jpg",
+        image: "",
         heightMin: 0,
         heightMax: 0,
         weightMin: 0,
@@ -92,8 +92,11 @@ const handelSubmit = async (event) => {
     
     return (
         <div className="cont">
-
-            <h1 className="title"> Create a New Breed </h1>
+          <div className="title">
+            <h1 > Create a New Breed </h1>
+          </div>
+            <hr />
+            <br />
             <NavLink to='/home' className="button">Back</NavLink>
             <div className="formCont">
                 <form className="form" onSubmit={handelSubmit}>

@@ -27,6 +27,7 @@ const Detail = () => {
 
     return (
         <div className="detailContainer">
+          <br />
           <NavLink to="/home" className="button">Back</NavLink>
       
           <div className="content">
