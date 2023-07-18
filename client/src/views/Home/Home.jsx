@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import CardList from "../../components/CardList/CardList";
 import './Home.css'
-import { getAllDogs, orderByName, orderByWeight, filterCreated, filterByTemperament } from "../../redux/action";
+import { showAll, orderByName, orderByWeight, filterCreated, filterByTemperament } from "../../redux/action";
 
 const Home = ({temperaments}) => {
 
@@ -32,6 +32,10 @@ const Home = ({temperaments}) => {
     const handleFilterByTemperament = (event) => {
         dispatch(filterByTemperament(event.target.value));
     };
+
+    const handelShowAll = (event) => {
+        dispatch(showAll(event.target.value))
+    }
 
     // Calcula el índice del primer y último perro en la página actual
     const indexOfLastDog = currentPage * dogsPerPage;
@@ -65,53 +69,57 @@ const Home = ({temperaments}) => {
     };
 
     return (
-        <div className="contenedor">
-            <div className="order-filters">
-               <div className="orders">
-                  <h3>Order By</h3>
-                  <select className="select" onChange={handleOrderByName}>
-                    <option value="A">A-Z</option>
-                    <option value="D">Z-A</option>
-                  </select>
+  <div className="contenedor">
+    <div className="order-filters">
+        <div className="orders">
+          <h3>Order By</h3>
+          <select className="select" onChange={handleOrderByName}>
+            <option value="A">A-Z</option>
+            <option value="D">Z-A</option>
+          </select>
 
-                  <select className="select" onChange={handleOrderByWeight}>
-                    <option className="option" value="Min">Min</option>
-                    <option className="option" value="Max">Max</option>
-                  </select>
-                
-                </div>
-
-                <div className="filters">
-                  <h3>Filters By</h3>
-                  <select className="select" onChange={handleFilterCreated}>
-                    <option className="option" value="Existing">Existing</option>
-                    <option className="option" value="Created">Created</option>
-                  </select>
-
-                  <select className="select" onChange={handleFilterByTemperament}>
-                    <option className="option" value="All">All</option>
-                    {temperaments && temperaments.map((temperament) => (
-                    <option className="option" key={temperament.id} value={temperament.name}>{temperament.name}</option>
-                    ))}
-                  </select>
-                </div>
-            </div >
-            
-            <hr />
-
-            <div className="firstDogs">
-                <CardList dogs={dogsToShow} />
-            </div>
-            <hr />
-
-            <div className="pagination">
-                {renderPaginationButtons()}
-                <p>pages</p>
-            </div>
-            <hr />
-        
+          <select className="select" onChange={handleOrderByWeight}>
+            <option className="option" value="Min">Min</option>
+            <option className="option" value="Max">Max</option>
+          </select>
         </div>
-    );
+
+        <div className="showAllButtonContain">
+          <button className="buttonShow" onClick={handelShowAll}>Show All</button>
+        </div>
+      
+        <div className="filters">
+          <h3>Filters By</h3>
+          <select className="select" onChange={handleFilterCreated}>
+            <option className="option" value="Existing">Existing</option>
+            <option className="option" value="Created">Created</option>
+          </select>
+
+          <select className="select" onChange={handleFilterByTemperament}>
+            <option className="option" value="All">All</option>
+            {temperaments && temperaments.map((temperament) => (
+              <option className="option" key={temperament.id} value={temperament.name}>{temperament.name}</option>
+            ))}
+          </select>
+        </div>
+    </div >
+
+    <hr />
+
+    <div className="firstDogs">
+      <CardList dogs={dogsToShow} />
+    </div>
+    <hr />
+
+    <div className="pagination">
+      {renderPaginationButtons()}
+      <p>pages</p>
+    </div>
+    <hr />
+
+  </div>
+);
+
 };
 
 export default Home;

@@ -15,7 +15,7 @@
 
 .form{
     background-color: beige;
-    padding: 1em;
+    padding: 3.3em;
     border: solid black 1px;
 }
 
@@ -39,7 +39,6 @@ p{
     border:solid 1px black;
     color:white;
     background-color:#03A9F4 ;
-    text-decoration: none;
     font-size: 1em;
     cursor: pointer;
     transition:.3s;

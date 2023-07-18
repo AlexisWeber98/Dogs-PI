@@ -15,12 +15,13 @@ const App = () => {
     const location = useLocation();
     const dispatch = useDispatch()
     const temperaments = useSelector((state) => state.allTemperaments);
+    const dogs = useSelector((state) => state.filteredDogs)
 
    
 
     useEffect(()=> {
-        dispatch(getTemperaments())
-        dispatch(getAllDogs())
+      dispatch(getTemperaments());
+      dispatch(getAllDogs())
     }, [])
     return(
         <div>

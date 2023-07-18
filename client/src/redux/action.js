@@ -1,4 +1,4 @@
-import { ALL_DOGS, FILTRED_CREATED, GET_DETAIL, ORDER_BY_NAME, ORDER_BY_WEIGHT, FILTER_TEMPERAMENT, GET_TEMPERAMENTS, SEARCH} from "./action-types";
+import { ALL_DOGS, FILTRED_CREATED, GET_DETAIL, ORDER_BY_NAME, ORDER_BY_WEIGHT, FILTER_TEMPERAMENT, GET_TEMPERAMENTS, SEARCH, SHOW_ALL} from "./action-types";
 import axios from 'axios'
 
 const URL_DOGS = 'http://localhost:3001/dogs'
@@ -118,5 +118,12 @@ export const filterByTemperament = (temperament) => {
         throw new Error(error.message); 
       }
     };
+
 };
+    export const showAll = (event) => {
+        return {
+            type: SHOW_ALL,
+            payload:event
+        }
+    }
   

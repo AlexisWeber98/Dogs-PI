@@ -1,4 +1,5 @@
 export const SEARCH = "SEARCH";
+export const SHOW_ALL="SHOW_ALL"
 export const ALL_DOGS = "ALL_DOGS";
 export const GET_DETAIL = "GET_DETAIL";
 export const ORDER_BY_NAME = "ORDER_BY_NAME";

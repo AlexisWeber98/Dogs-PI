@@ -1,8 +1,19 @@
+.detailContainer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: column;
+
+}
+
 .content {
-    margin-top: 5em;
-    display: flex;
-    align-items: center;
-  }
+  margin-top: .8em;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+
   
   .imageContainer {
     display: grid;
@@ -12,15 +23,17 @@
   .image {
     width: 90%; 
     height: auto; 
-    border-bottom: 1px grey solid;
-    border-right: 1px grey solid;
+    border-bottom: solid 3px beige;
+    border-right: solid 3px beige;
   }
   
   .detali {
-    float: right;
+    text-align: center;
+    float: right 50%;
     font-size: 18px;
-    margin-right: 1em;
     background-color: beige;
+    margin-left: 2em;
+    padding-right: -2em;
   }
 
   h3{

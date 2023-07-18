@@ -1,4 +1,4 @@
-import { ALL_DOGS, FILTRED_CREATED, GET_TEMPERAMENTS, ORDER_BY_NAME, ORDER_BY_WEIGHT, FILTER_TEMPERAMENT, SEARCH } from "./action-types";
+import { ALL_DOGS, FILTRED_CREATED, GET_TEMPERAMENTS, ORDER_BY_NAME, ORDER_BY_WEIGHT, FILTER_TEMPERAMENT, SEARCH, SHOW_ALL } from "./action-types";
 
 let initialState = {
   AllDogs: [],
@@ -119,6 +119,12 @@ const reducer = (state = initialState, {type,payload}) => {
       return {
         ...state,
         filteredDogs: payload
+      };
+
+    case SHOW_ALL:
+      return{
+        ...state,
+        filteredDogs: state.AllDogs
       }
           
     default:

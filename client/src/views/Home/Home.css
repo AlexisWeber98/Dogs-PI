@@ -12,19 +12,35 @@ h2{
 
 .order-filters{
 display:grid;
-grid-template-columns: 1fr 1fr;
+grid-template-columns: 1fr 1fr 1fr;
 justify-items: center;
 
 }
 
+.order-filters h3{
+    background-color: beige;
+    text-align: center;
+}
+
 .orders{
     text-align: center;
-   
     justify-content: space-between;
 }
 
+.option{
+    font-size: 1em;
+}
+
+
+.buttonShow{
+    margin-top: 1.2em;
+    padding: .6em;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+
 .filters{
- 
     justify-content: space-between;
     margin-left: 2em;
 }
@@ -39,7 +55,7 @@ justify-items: center;
 .button{
     padding: 1em;
     border:solid 1px black;
-    color:white;
+    color:black;
     background-color:#03A9F4 ;
     text-decoration: none;
     font-size: 1em;

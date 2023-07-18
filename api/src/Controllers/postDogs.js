@@ -43,9 +43,10 @@ module.exports = postDogs = async (req, res) => {
       lifeSpan,
       bredFor,
       breedGroup,
-      temperament: temperamentRecords.map((record) => record.id),
+      temperament,
       created: true,
     });
+    
 
     for (let i = 0; i < temperamentRecords.length; i++) {
       await dog.addTemperament(temperamentRecords[i]);

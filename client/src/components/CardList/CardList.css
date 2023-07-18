@@ -10,8 +10,8 @@
   
   .card {
     background-color: aliceblue;
-    width: 300px;
-    margin: 10px;
+    width: 250px;
+    margin: 8px;
     flex-direction: column;
     text-decoration: none;
     border: 1px solid black;

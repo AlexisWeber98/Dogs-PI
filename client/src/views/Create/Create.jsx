@@ -105,7 +105,7 @@ const handelSubmit = async (event) => {
                     <p>{errors.name}</p>
                     <br />
 
-                    <label htmlFor="heightMin">Height Min (metric System)</label>
+                    <label htmlFor="heightMin">Height Min : </label>
                     <input className="inputNum" type="number" min="1" name="heightMin" onChange={handelChange} value={dogDetails.heightMin}/>Cm
                     <p>{errors.heightMin}</p>
                     <br />

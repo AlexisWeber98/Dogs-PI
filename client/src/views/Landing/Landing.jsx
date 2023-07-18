@@ -1,9 +1,8 @@
 import { NavLink } from "react-router-dom";
-import { getAllDogs } from "../../redux/action";
 import './Landing.css'
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import Card from "../../components/Card/Card";
+import { useState } from "react";
+import { useSelector } from "react-redux";
+
 
 const Landing = () => {
     const dogs = useSelector((state) => state.filteredDogs);
@@ -28,9 +27,8 @@ const Landing = () => {
           </div>
           <hr />
          <br />
-          <NavLink className="buttonEnter" to="/home">Enter to the Page</NavLink>
           {dogs.length > 0 && (
-            <>
+              <>
               <article className="block">
                 <div className="buttonContainer">
                   <button onClick={handlePrevDog} disabled={dogId === 0}>Previous</button>
@@ -43,8 +41,17 @@ const Landing = () => {
                   <button onClick={handleNextDog} disabled={dogId === dogs.length - 1}>Next</button>
                 </div>
                 
-              </article>
-              <h3 className="nameLanding" >Name: {dogs[dogId].name}</h3>
+             </article>
+             <div className="finalBlock">
+              <div className="nameCont">
+                <h3 className="nameLanding" >Name: {dogs[dogId].name}</h3>
+              </div>
+              <hr /> 
+
+              <div className="navLinkButton">
+                <NavLink className="buttonEnter" to="/home">Enter to the Page</NavLink>
+              </div>
+             </div>
             </>
           )}
         </div>
