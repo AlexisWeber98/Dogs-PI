@@ -10,6 +10,9 @@ const getDogs = async (req, res) => {
     const response = await axios.get(URL);
     const dogsFromApi = response.data;
 
+
+    // --------------------- Funcion para obtener desde Base de Datos -----------------------//
+
     const dogsFromDB = await Dog.findAll({
       include: {
         model: Temperament,

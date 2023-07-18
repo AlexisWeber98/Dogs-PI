@@ -38,60 +38,62 @@ const getDetailApi = async (idRaza) => {
 
 
 const getDetailDB = async (id) => {
-    try {
+  try {
     let findTemperament = null;
 
     const dog = await Dog.findOne({
-        where: {id},
-        include: {
-          model : Temperament,
-        atributes: ["name"],
-      through: {atributes: []}}})
+      where: { id },
+      include: {
+        model: Temperament,
+        attributes: ["name"],
+        through: { attributes: [] },
+      },
+    });
 
-        if (!dog) {
-            throw new Error('Perro no encontrado en la base de datos')
-        };
-      
-        if (dog.temperament) {
-          findTemperament = await Temperament.findOne({where: {
-            id: dog.temperament
-          }})
-        };
+    if (!dog) {
+      throw new Error('Perro no encontrado en la base de datos');
+    }
+    
+    if (dog.temperaments) {
+      findTemperament = dog.temperaments.map((temperament) => temperament.name);
+    }
 
-        const dogDetail = {
-            id : dog.id,
-            name: dog.name,
-            image: dog.image,
-            lifeSpan: dog.lifeSpan,
-            height: `${dog.heightMin}-${dog.heightMax}`,
-            weight: `${dog.weightMin}-${dog.weightMax}`,
-            bredFor: dog.bredFor,
-            breedGroup: dog.breedGroup,
-            temperament: findTemperament.name,
-            create: dog.create
-        };
+    const dogDetail = {
+      id: dog.id,
+      name: dog.name,
+      image: dog.image,
+      lifeSpan: dog.lifeSpan,
+      height: `${dog.heightMin}-${dog.heightMax}`,
+      weight: `${dog.weightMin}-${dog.weightMax}`,
+      bredFor: dog.bredFor,
+      breedGroup: dog.breedGroup,
+      temperament: findTemperament.join(", "),
+      created: dog.created,
+    };
 
-        return dogDetail;
+    return dogDetail;
   } catch (error) {
     throw new Error('Error al obtener el detalle del perro desde la Base de Datos');
   }
-}
+};
+
 
 module.exports = getDog =  async (req, res) => {
-    try { 
-        
-        const {idRaza} = req.params     
+    try {     
+      const {idRaza} = req.params     
     
-        if (isIntegerId(idRaza)) dogDetail = await getDetailApi(idRaza)
-          else {
-            dogDetail= await getDetailDB(idRaza)
+      if (isIntegerId(idRaza)) dogDetail = await getDetailApi(idRaza)
+        else {
+          dogDetail= await getDetailDB(idRaza)
         };
 
-        return res.status(200).json(dogDetail)
+        console.log(dogDetail);
+      return res.status(200).json(dogDetail)
 
     } catch (error) {
-        return res.status(500).send(error.message)
-    }
-    }
+    
+    return res.status(500).send(error.message)
+  }
+};
 
    

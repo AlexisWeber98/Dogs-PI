@@ -116,7 +116,6 @@ const reducer = (state = initialState, {type,payload}) => {
 
     case SEARCH:
 
-    console.log(payload);
       return {
         ...state,
         filteredDogs: payload

@@ -7,7 +7,9 @@ import { getAllDogs, orderByName, orderByWeight, filterCreated, filterByTemperam
 const Home = ({temperaments}) => {
 
     const dispatch = useDispatch();
+
     const dogs = useSelector((state) => state.filteredDogs);
+
 
     const [currentPage, setCurrentPage] = useState(1);
     const dogsPerPage = 8;

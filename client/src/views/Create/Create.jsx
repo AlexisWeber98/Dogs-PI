@@ -116,7 +116,7 @@ const handelSubmit = async (event) => {
                     <br />
                     
                     <label htmlFor="weightMin">Weight Min : </label>
-                    <input className="inputNum" type="number" min="1" name="weightMin" onChange={handelChange} value={dogDetails.weightMin}/>Kg
+                    <input className="inputNum" type="number" min="0" name="weightMin" onChange={handelChange} value={dogDetails.weightMin}/>Kg
                     <p>{errors.weightMin}</p>
                     <br />
 
