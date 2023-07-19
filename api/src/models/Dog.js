@@ -52,6 +52,11 @@ module.exports = (sequelize) => {
     created: {
       type: DataTypes.BOOLEAN,
       defaultValue: false
+    },
+
+    vacunated:{
+      type: DataTypes.BOOLEAN,
+      allowNull:true
     }
   }, {
     timestamps: false

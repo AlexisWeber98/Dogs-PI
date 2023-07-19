@@ -4,7 +4,7 @@ import CardList from "../../components/CardList/CardList";
 import './Home.css'
 import { showAll, orderByName, orderByWeight, filterCreated, filterByTemperament, getAllDogs } from "../../redux/action";
 
-const Home = ({temperaments}) => {
+const Home = ({temperaments, currentPage, setCurrentPage}) => {
 
     const dispatch = useDispatch();
 
@@ -14,7 +14,6 @@ const Home = ({temperaments}) => {
       dispatch(getAllDogs())
     }, [])
 
-    const [currentPage, setCurrentPage] = useState(1);
     const dogsPerPage = 8;
 
 
@@ -125,4 +124,4 @@ const Home = ({temperaments}) => {
 
 };
 
-export default Home;
+export default Home

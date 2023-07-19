@@ -13,6 +13,7 @@ module.exports = postDogs = async (req, res) => {
       bredFor,
       temperament,
       breedGroup,
+      vacunated,
     } = req.body;
 
     console.log(req.body);
@@ -44,6 +45,7 @@ module.exports = postDogs = async (req, res) => {
       bredFor,
       breedGroup,
       temperament,
+      vacunated,
       created: true,
     });
     
