@@ -22,4 +22,14 @@
     height: 23em;
     object-fit: cover;
   }
+
+  .h2-nameDog{
+margin: .6em;
+  }
+
+  .h3-dogcardDetail{
+    margin: .5em
+  }
+
+  
   
