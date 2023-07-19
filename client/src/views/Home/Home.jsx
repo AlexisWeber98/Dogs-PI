@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import CardList from "../../components/CardList/CardList";
 import './Home.css'
-import { showAll, orderByName, orderByWeight, filterCreated, filterByTemperament } from "../../redux/action";
+import { showAll, orderByName, orderByWeight, filterCreated, filterByTemperament, getAllDogs } from "../../redux/action";
 
 const Home = ({temperaments}) => {
 
@@ -10,6 +10,9 @@ const Home = ({temperaments}) => {
 
     const dogs = useSelector((state) => state.filteredDogs);
 
+    useEffect(()=>{
+      dispatch(getAllDogs())
+    }, [])
 
     const [currentPage, setCurrentPage] = useState(1);
     const dogsPerPage = 8;

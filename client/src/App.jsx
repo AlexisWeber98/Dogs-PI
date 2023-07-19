@@ -20,8 +20,8 @@ const App = () => {
    
 
     useEffect(()=> {
+        dispatch(getAllDogs())
       dispatch(getTemperaments());
-      dispatch(getAllDogs())
     }, [])
     return(
         <div>
