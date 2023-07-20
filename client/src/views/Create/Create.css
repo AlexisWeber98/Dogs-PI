@@ -4,26 +4,44 @@
     padding: 1em;
 }
 
+.buttonBack{
+    margin-left: 8em;
+    padding: 1em;
+}
+
 
 .formCont {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 3em;
     font-size: 1.2em
 }
 
 .form{
     background-color: beige;
-    padding: 3.3em;
+    padding: 1.5em;
+    padding-bottom: .5em;
     border: solid black 1px;
 }
 
+label{
+    font-size: .8em;
+}
+
+.errors{
+    font-size: .7em;
+    color: red;
+}
+
+text{
+    font-size: .8em;
+}
+
 .input{
-    font-size: .9em;
+    font-size: .7em;
 }
 .inputNum {
-    font-size: .9em;
+    font-size: .7em;
     width: 4em;
 }
 
@@ -35,11 +53,30 @@ p{
 .submit{
     
     margin-left: 7em;
-    padding: 1em;
+    padding: .6em;
     border:solid 1px black;
     color:white;
     background-color:#03A9F4 ;
     font-size: 1em;
     cursor: pointer;
     transition:.3s;
+}
+
+@media (max-width: 750px){
+
+    .title{
+        padding: auto;
+    }
+
+    .buttonBack{
+        padding: .4em;
+    }
+
+    .form{
+        padding: .3em;
+    }
+
+    label, input[type="number"], input[placeholder], select,.submit{
+        font-size: .7em;
+    }
 }

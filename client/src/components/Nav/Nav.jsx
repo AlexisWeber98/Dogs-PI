@@ -11,16 +11,16 @@ const Nav = ({ setCurrentPage }) => {
   const [errorNameSearch, setErrorNameSearch] = useState(null);
 
   const handleChange = (event) => {
-    const value = event.target.value;
-    setName(value);
-  
-    if (/\d/.test(value)) {
-      setErrorNameSearch("Cannot contain numbers");
-    } else {
-      setErrorNameSearch(null);
-    }
-  };
-  
+  const value = event.target.value;
+  setName(value);
+
+  if (/\d/.test(value)) {
+    setErrorNameSearch("Cannot contain numbers");
+  } else {
+    setErrorNameSearch(null);
+  }
+};
+
 
   const handleSubmit = () => {
     if (!errorNameSearch) {

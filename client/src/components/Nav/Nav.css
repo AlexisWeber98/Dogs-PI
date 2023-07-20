@@ -1,35 +1,91 @@
-.bodyNav{
-  margin-top: none;
-  padding: 1em;
-background-color: beige;
-border-bottom: 1px solid black ;
-}
-.container{
- 
-    display: flex;
-    font-size: 1em;
-    justify-content: center;
-    align-items: center;
+.bodyNav {
+  padding: .5em;
+  background-color: beige;
+  border-bottom: 1px solid black;
 }
 
-h1{
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.h1-container {
+  flex-basis: 100%;
+  margin-bottom: .4em;
+}
+
+h1 {
   text-align: center;
-  font-size: 2.5em;
+  font-size: 1.8em;
+  margin: .1em;
+}
+
+.searchBar {
+  display: flex;
+  align-items: center;
+}
+
+.button {
+  padding: 0.6em 1em;
+  font-size: 1em;
+  margin-left: 0.5em;
 }
 
 .my-input {
-   font-size: 1em;
-   padding: 1em;
-   justify-items: center
-}
-.button-create{
-    margin-left: 10em;
-   
+  font-size: .9em;
+  padding: 0.68em;
 }
 
-.button:hover{
-padding: 1.2em;
+.error-message {
+  color: red;
+  font-size: 0.8em;
+  margin-left: 0.5em;
 }
+
+.button-create {
+  font-size: 1em;
+  padding: 0.8em 1.2em;
+}
+
+/* Estilos responsivos */
+
+@media (max-width: 750px) {
+
+  .bodyNav{
+    padding: .3em;
+  }
+
+  .container {
+    flex-direction: column;
+  }
+
+  .button{
+    padding: .3em;
+  }
+
+  .my-input{
+    padding: .3em;
+  }
+
+  .button-create {
+    padding: .2em;
+    margin-top: .5;
+    margin-bottom: .1em;
+  }
+
+  .searchBar {
+    flex-basis: 100%;
+    margin-bottom: .5em;
+  }
+
+  .button {
+    margin-left: 0;
+  }
+}
+
+
 
 
 

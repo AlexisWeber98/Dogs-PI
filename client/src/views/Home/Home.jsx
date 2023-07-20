@@ -74,7 +74,7 @@ const Home = ({temperaments, currentPage, setCurrentPage}) => {
   <div className="contenedor">
     <div className="order-filters">
         <div className="orders">
-          <h3>Order By</h3>
+          <h3 className="orderTitle" >Order By</h3>
           <select className="select" onChange={handleOrderByName}>
             <option value="A">A-Z</option>
             <option value="D">Z-A</option>
@@ -91,7 +91,7 @@ const Home = ({temperaments, currentPage, setCurrentPage}) => {
         </div>
       
         <div className="filters">
-          <h3>Filters By</h3>
+          <h3 className="orderTitle">Filters By</h3>
           <select className="select" onChange={handleFilterCreated}>
             <option className="option" value="Existing">Existing</option>
             <option className="option" value="Created">Created</option>
@@ -107,18 +107,19 @@ const Home = ({temperaments, currentPage, setCurrentPage}) => {
     </div >
 
     <hr />
-
-    <div className="firstDogs">
-      <CardList dogs={dogsToShow} />
-    </div>
-    <hr />
-
     <div className="pagination">
-      {renderPaginationButtons()}
       <p>pages</p>
+      {renderPaginationButtons()}
+    <hr />
+    </div>
+
+    <div className="contList">
+    <div className="firstDogs">
+      <CardList dogs={dogsToShow} className="cardList"/>
+    </div>
     </div>
     <hr />
-
+    <br />
   </div>
 );
 

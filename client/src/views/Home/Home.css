@@ -1,7 +1,7 @@
 
 
 h3{
-    margin-right:2em ;
+    margin-right:1em ;
     margin-left: 4em;
 }
 
@@ -14,10 +14,11 @@ h2{
 display:grid;
 grid-template-columns: 1fr 1fr 1fr;
 justify-items: center;
-
 }
 
 .order-filters h3{
+    margin:.5em auto;
+    font-size: 1em;
     background-color: beige;
     text-align: center;
 }
@@ -27,45 +28,42 @@ justify-items: center;
     justify-content: space-between;
 }
 
-.option{
-    font-size: 1em;
-}
-
 
 .buttonShow{
-    margin-top: 1.2em;
+    margin-top: 1em;
     padding: .6em;
-    font-size: 1.2em;
+    font-size: .8em;
     cursor: pointer;
 }
 
 
 .filters{
     justify-content: space-between;
-    margin-left: 2em;
+   text-align: center;
 }
 
 .select{
     justify-content: center;
     margin-left: 2em;
-    padding: .5em;
+    padding: .3em;
 }
 
 
 .button{
-    padding: 1em;
+    padding: .5em;
     border:solid 1px black;
     color:black;
     background-color:#03A9F4 ;
     text-decoration: none;
-    font-size: 1em;
+    font-size: .5em;
     cursor: pointer;
     transition:.3s;
-    margin-top: .5em
+    margin-top: .5em;
+    margin-left: 1em
 };
 
 .button:hover {
- padding: 2em;
+ padding: .8em;
 }
 
 .contenedor{
@@ -84,20 +82,41 @@ justify-items: center;
     margin: 1em;
 }
 .pagination p{
-    font-size: 1.5em;
+    font-size: 1em;
     padding: .5em;
     background-color:beige;
 }
 
 .pages {
     margin: .5em;
-    padding: .5em;
+    padding: .4em;
     justify-content: center;
     text-align: center;
-    font-size: 1.2em;
+    font-size: .8em;
     border-style:double;
     cursor: pointer;
+}
 
+.contList{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+}
+
+.firstDogs{
+    display: flex;
+    width: 80%;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+}
+
+@media (max-width:750px) {
+    .buttonShow{
+        margin-left: 1.5em;
+    }
 }
 
 

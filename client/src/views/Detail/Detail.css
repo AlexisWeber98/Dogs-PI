@@ -1,44 +1,77 @@
 .detailContainer {
   display: flex;
-  justify-content: flex-end;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
+}
 
+.button {
+  padding: 0.8em 1.2em;
+  font-size: 1em;
+  margin-bottom: .5em;
 }
 
 .content {
-  margin-top: .8em;
+  grid-template-columns: 1fr 1fr;
   display: flex;
-  justify-content: flex-end;
-  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: none;
+}
+
+.imageContainer {
+  flex-basis: 60%;
+  max-width: 80%;
+  height: auto;
+  margin-bottom: 1em;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  border: solid 3px beige;
+  margin-right: 1em;
+}
+
+.detali {
+  width: 20%;
+  height: 60%;
+  float: left;
+  max-width: 30%;
+  text-align: center;
+  flex-basis: 100%;
+  font-size: .9em;
+  background-color: beige;
+  padding:.3em;
+  margin-left: .3em;
+}
+
+h3 {
+  margin: 1em 0;
+}
+
+/* Estilos responsivos */
+
+@media (max-width: 768px) {
+  .content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .imageContainer {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+
+  .detali {
+    margin-left: 0;
+    margin-right: 0;
+    width: 80%;
+    max-width: 80%
+  }
 }
 
 
-  
-  .imageContainer {
-    display: grid;
-    float: left;
-  }
-  
-  .image {
-    width: 90%; 
-    height: auto; 
-    border-bottom: solid 3px beige;
-    border-right: solid 3px beige;
-  }
-  
-  .detali {
-    text-align: center;
-    float: right 50%;
-    font-size: 18px;
-    background-color: beige;
-    margin-left: 2em;
-    padding-right: -2em;
-  }
 
-  h3{
-    margin:1em;
-    
-  }
+
   
   

@@ -96,44 +96,38 @@ const handelSubmit = async (event) => {
             <h1 > Create a New Breed </h1>
           </div>
             <hr />
-            <br />
+            <div className="buttonBack">
             <NavLink to='/home' className="button">Back</NavLink>
+            </div>
             <div className="formCont">
                 <form className="form" onSubmit={handelSubmit}>
                     <label htmlFor="name">Name of breed : </label>
                     <input className="input" type="text" name="name" placeholder="name" onChange={handelChange} value={dogDetails.name}></input>
-                    <p>{errors.name? errors.name:null}</p>
-                    <br />
+                    <p className= "errors">{errors.name? errors.name:null}</p>
 
                     <label htmlFor="heightMin">Height Min : </label>
                     <input className="inputNum" type="number" min="0" name="heightMin" onChange={handelChange} value={dogDetails.heightMin}/>Cm
-                    <p>{errors.heightMin? errors.heightMin:null}</p>
-                    <br />
+                    <p className= "errors">{errors.heightMin? errors.heightMin:null}</p>
 
                     <label htmlFor="heightMax">Height Max : </label>
                     <input className="inputNum" type="number" min="0" name="heightMax" onChange={handelChange} value={dogDetails.heightMax}/>Cm
-                    <p>{errors.heightMax? errors.heightMax:null}</p> 
-                    <br />
+                    <p className= "errors">{errors.heightMax? errors.heightMax:null}</p> 
                     
                     <label htmlFor="weightMin">Weight Min : </label>
                     <input className="inputNum" type="number" min="0" name="weightMin" onChange={handelChange} value={dogDetails.weightMin}/>Kg
-                    <p>{errors.weightMin? errors.weightMin:null}</p>
-                    <br />
+                    <p className= "errors">{errors.weightMin? errors.weightMin:null}</p>
 
                     <label htmlFor="weightMax">Weight Max : </label>
                     <input className="inputNum" type="number" min="0" name="weightMax" onChange={handelChange} value={dogDetails.weightMax}/>Kg
-                    <p>{errors.weightMax? errors.weightMax: null}</p>
-                    <br />
+                    <p className= "errors">{errors.weightMax? errors.weightMax: null}</p>
 
                     <label htmlFor="lifeSpan">Life Span : </label>
                     <input className="input" type="text" name="lifeSpan" placeholder="ej: 9 - 12."onChange={handelChange} value={dogDetails.lifeSpan}/>years
-                    <p>{errors.lifeSpan? errors.lifeSpan:null}</p>
-                    <br />
+                    <p className= "errors">{errors.lifeSpan? errors.lifeSpan:null}</p>
 
                     <label htmlFor="bredFor">Bred For : </label>
                     <input className="input" name="bredFor" type="text"  placeholder="Bred For" onChange={handelChange} value={dogDetails.bredFor}/>
-                    <p>{errors.bredFor? errors.bredFor:null}</p>
-                    <br />
+                    <p className= "errors">{errors.bredFor? errors.bredFor:null}</p>
                     
                     <label htmlFor="breedGroup">Breed Gropup : </label>
                     <select name="breedGroup" defaultValue="Select" onChange={handelChange}>
@@ -150,7 +144,6 @@ const handelSubmit = async (event) => {
                         <option value="Working">Working</option>
                     </select>
                     <br />
-                    <br />
 
                     <label htmlFor="temperament">Temperament :</label>
                     <select name="temperament" multiple onChange={handleAddTemperament}>
@@ -160,7 +153,7 @@ const handelSubmit = async (event) => {
                         </option>
                         ))}
                     </select>
-                    <p>{errors.temperament? errors.temperament:null}</p>
+                    <p className= "errors">{errors.temperament? errors.temperament:null}</p>
                     
                     {dogDetails.temperament.length > 0 && (
                      <div className="selectedTemperaments">
@@ -175,13 +168,11 @@ const handelSubmit = async (event) => {
                         ))}
                      </div>
                     )}
-                    <br />
-                     <br />
+
 
                     <label htmlFor="image">Image : </label>
                     <input className="input" name="image" type="text" placeholder="URL" value={dogDetails.image} onChange={handelChange}/>
-                    <p>{errors.image? errors.image:null}</p>
-                    <br />
+                    <p className= "errors">{errors.image? errors.image:null}</p>
 
                     <button type="submit" className="submit" disabled={!dogDetails.name||
                         errors.name || errors.bredFor || errors.heightMax || errors.heightMin || errors.weightMax || errors.weightMin || errors.lifeSpan || errors.temperament || errors.image
