@@ -7,6 +7,7 @@
 .buttonBack{
     margin-left: 8em;
     padding: 1em;
+    font-size: 1.3em;
 }
 
 
@@ -19,13 +20,13 @@
 
 .form{
     background-color: beige;
-    padding: 1.5em;
-    padding-bottom: .5em;
+    padding: 1.8em;
+    padding-bottom: .8em;
     border: solid black 1px;
 }
 
 label{
-    font-size: .8em;
+    font-size: 1.2em;
 }
 
 .errors{
@@ -34,14 +35,14 @@ label{
 }
 
 text{
-    font-size: .8em;
+    font-size: 1em;
 }
 
 .input{
-    font-size: .7em;
+    font-size: .9em;
 }
 .inputNum {
-    font-size: .7em;
+    font-size: .9em;
     width: 4em;
 }
 
@@ -52,8 +53,8 @@ p{
 
 .submit{
     
-    margin-left: 7em;
-    padding: .6em;
+    margin-left: 8em;
+    padding: .8em;
     border:solid 1px black;
     color:white;
     background-color:#03A9F4 ;

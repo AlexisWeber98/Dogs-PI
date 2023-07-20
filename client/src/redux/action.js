@@ -1,15 +1,15 @@
 import { ALL_DOGS, FILTRED_CREATED, GET_DETAIL, ORDER_BY_NAME, ORDER_BY_WEIGHT, FILTER_TEMPERAMENT, GET_TEMPERAMENTS, SEARCH, SHOW_ALL} from "./action-types";
 import axios from 'axios'
 
-const URL_DOGS = 'http://localhost:3001/dogs'
-const URL_TEMPERAMENTS= 'http://localhost:3001/temperaments'
-const URL_NAME = "http://localhost:3001/dogs/name?name="
+const URL_LOCAL ="http://localhost:3001/"
+const URL = "https://dogs-pi-production-18a0.up.railway.app/"
+
 
 export const getAllDogs = () => {
 
     return async (dispatch) => {
         try{
-            const response = await axios.get(URL_DOGS);
+            const response = await axios.get(`${URL}dogs`)
             const dogs = response.data
             return dispatch ({
                 type: ALL_DOGS,
@@ -25,7 +25,7 @@ export const getDetail = (id) => {
 
     return async (dispatch) => {
         try {
-            const response = await axios.get(`${URL_DOGS}/${id}`);
+            const response = await axios.get(`${URL}dogs/${id}`);
             const data = response.data
             return dispatch ({
                 type : GET_DETAIL,
@@ -63,7 +63,7 @@ export const filterCreated = (filtred) => {
 export const getTemperaments = () => {
     return async (dispatch) => {
         try{
-            const response = await axios.get(URL_TEMPERAMENTS);
+            const response = await axios.get(`${URL}temperaments`);
             const temperaments= response.data
             return dispatch ({
                 type: GET_TEMPERAMENTS,
@@ -86,7 +86,7 @@ export const filterByTemperament = (temperament) => {
 
     return async () =>  {
        try {
-        await axios.post(URL_DOGS, {
+        await axios.post(`${URL}dogs`, {
         name,
         image,
         heightMin: Number(heightMin),
@@ -108,7 +108,7 @@ export const filterByTemperament = (temperament) => {
   export const onSearch = (name) => {
     return async (dispatch) => {
       try {
-        const { data } = await axios.get(`${URL_NAME}${name}`);
+        const { data } = await axios.get(`${URL}dogs/name?name=${name}`);
         console.log(data);
         return dispatch({
           type: SEARCH,
