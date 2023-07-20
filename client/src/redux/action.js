@@ -1,7 +1,7 @@
 import { ALL_DOGS, FILTRED_CREATED, GET_DETAIL, ORDER_BY_NAME, ORDER_BY_WEIGHT, FILTER_TEMPERAMENT, GET_TEMPERAMENTS, SEARCH, SHOW_ALL} from "./action-types";
 import axios from 'axios'
 
-const URL_LOCAL ="http://localhost:3001/"
+//const URL ="http://localhost:3001/"
 const URL = "https://dogs-pi-production-18a0.up.railway.app/"
 
 
