@@ -119,7 +119,6 @@ const Home = ({temperaments, currentPage, setCurrentPage}) => {
     </div>
     </div>
     <hr />
-    <br />
   </div>
 );
 

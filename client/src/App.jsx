@@ -24,19 +24,16 @@ const App = () => {
     }, [])
     return(
     <div>
+  {location.pathname !== "/" && location.pathname !== "/create" ?<Nav currentPage={currentPage}  setCurrentPage={setCurrentPage} /> : null}
 
-  {location.pathname !== "/" && location.pathname !== "/create" ?<Nav currentPage={currentPage}  setCurrentPage={setCurrentPage} />
-
-   : null}
-
-        <Routes>
-            <Route path="/" element= {<Landing/>}/>
-            <Route path="/home" element= {<Home temperaments = {temperaments} setCurrentPage={setCurrentPage} currentPage={currentPage}/>}/>
-            <Route path="/detail/:id" element={<Detail/>}/>
-            <Route path="/create" element ={<Create temperaments= {temperaments}/>}/>
-        </Routes>
-        </div>
-    )
+    <Routes>
+      <Route path="/" element= {<Landing/>}/>
+      <Route path="/home" element= {<Home temperaments = {temperaments} setCurrentPage={setCurrentPage} currentPage={currentPage}/>}/>
+      <Route path="/detail/:id" element={<Detail/>}/>
+      <Route path="/create" element ={<Create temperaments= {temperaments}/>}/>
+      </Routes>
+    </div>
+  )
 
 };
 

@@ -50,16 +50,14 @@ justify-items: center;
 
 
 .button{
-    padding: .5em;
+    padding: .8em;
     border:solid 1px black;
     color:black;
     background-color:#03A9F4 ;
     text-decoration: none;
-    font-size: .5em;
+    font-size: .8em;
     cursor: pointer;
     transition:.3s;
-    margin-top: .5em;
-    margin-left: 1em
 };
 
 .button:hover {
@@ -76,23 +74,21 @@ justify-items: center;
 }
 
 .pagination{
-    
     text-align: center;
     justify-content: space-between;
-    margin: 1em;
 }
 .pagination p{
     font-size: 1em;
-    padding: .5em;
+    padding: .2em;
     background-color:beige;
 }
 
 .pages {
-    margin: .5em;
-    padding: .4em;
+    margin-inline: .5em;
+    padding: .6em;
     justify-content: center;
     text-align: center;
-    font-size: .8em;
+    font-size: 1em;
     border-style:double;
     cursor: pointer;
 }
@@ -113,7 +109,7 @@ justify-items: center;
     justify-items: center;
 }
 
-@media (max-width:750px) {
+@media (max-width:1080px) {
     .buttonShow{
         margin-left: 1.5em;
     }
