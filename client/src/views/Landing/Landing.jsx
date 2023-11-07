@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import './Landing.css'
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import WoD from "../../../public/WoD.png";
 
 
 const Landing = () => {
@@ -24,6 +25,7 @@ const Landing = () => {
     
   <div className="landingContainer">
     <div className="title">
+    <img className="logo" src={WoD} alt="logo" width={150} />
       <h1>Welcome to World Of Dogs!</h1>
     </div>
     <hr />
