@@ -36,7 +36,7 @@ const Landing = () => {
           </div>
 
           <div  className="imageLandingContainer" >
-            <img className="imageLanding" src={dogs[dogId].image.url} alt={dogs[dogId].name} />
+            <img className="imageLanding" src={dogs[dogId].image} alt={dogs[dogId].name} />
             </div>
             <div className="buttonContainer">
               <button onClick={handleNextDog} disabled={dogId === dogs.length - 1}>Next</button>
