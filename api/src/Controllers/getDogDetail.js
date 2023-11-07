@@ -15,12 +15,14 @@ const getDetailApi = async (idRaza) => {
     const {data} = await axios.get(URL)
     
     const dog = data.find((dog) => dog.id === parseInt(idRaza))
-
+    const response = await axios.get(`https://api.thedogapi.com/v1/images/${dog.reference_image_id}`)
+    const DogImage = response.data
+    
   
     const dogDetail = {
         id: dog.id,
         name: dog.name,
-        image: dog.image?.url,
+        image: DogImage.url,
         bredFor: dog.bred_for || "unknown",
         breedGroup: dog.breed_group,
         lifeSpan: dog.life_span,
