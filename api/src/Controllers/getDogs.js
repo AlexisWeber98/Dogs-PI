@@ -5,11 +5,29 @@ const { API_KEY } = process.env;
 
 const URL = `https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`;
 
+
 const getDogs = async (req, res) => {
   try {
     const response = await axios.get(URL);
-    const dogsFromApi = response.data;
+    const dogsApi = response.data;
+    const dogApiMap = await Promise.all(dogsApi.map(async (dogApi) => {
+      const UrlImage = await axios.get(`https://api.thedogapi.com/v1/images/${dogApi.reference_image_id}`);
+      const DogImage = UrlImage.data;
 
+      return {
+        name: dogApi.name,
+        temperaments: dogApi.temperaments ? dogApi.temperaments : [],
+        id: dogApi.id,
+        image: DogImage.url,
+        life_span: dogApi.life_span,
+        height: dogApi.height.metric,
+        weight: dogApi.weight.metric,
+        bredFor: dogApi.bred_for,
+        breed_group: dogApi.breed_group,
+      };
+    }));
+    
+    const dogsFromApi = dogApiMap
 
     // --------------------- Funcion para obtener desde Base de Datos -----------------------//
 
