@@ -1,96 +1,112 @@
 
 body{
-background-image:url(../../assets/pxfuel.jpg);
-background-repeat: no-repeat;
-background-size: cover;
-}
-
-.buttonEnter{
-    padding: 1em;
-    border:solid 1px black;
-    color:white;
-    background-color:#03A9F4 ;
-    text-decoration: none;
-    font-size: 1.3em;
-    cursor: pointer;
-    transition:.3s;
-    margin-top: .5em;
-    text-align: center;
-    justify-content: center;}
-.block{
-    margin-top: 5em;
-    display:flex;
-    columns:auto;
-    align-items:center;
-    justify-content: center;
-}
-
-.imageLandingContainer {
-    width: 30em;
-    height: 20em;
-    overflow: hidden;
-}
-  
-.imageLanding {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border: 2px solid beige
-}
-  
-.buttonContainer {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-.buttonContainer button {
-    padding: 10px 20px;
-    margin: 0 10px;
-    font-size: 16px;
-    background-color: #f5f5f5;
-    border: 2px solid #ccc;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.buttonContainer button:hover {
-    background-color: #ebebeb;
-}
-
-.buttonContainer button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
-.finalBlock{
-    justify-content: center;
-    align-items: center;
-}
-.nameCont{
-    margin-top: 2em;
-    text-align:center;
-    background-color: beige;
-    font-size: 1.5em;
-    padding: .5em;
-}
-
-
-
-.navLinkButton{
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    align-self: center;
-}
-
-.buttonEnter{
-    color:black;
-    transition: .3s;
-}
-.buttonEnter:hover{
-    padding: 1em;
-    font-size: 1.5em;
-}
+    background-image:url(../../assets/pxfuel.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%v;
+    background-position: center;
+    
+    }
+    
+    .buttonEnter{
+        padding: 1em;
+        border:solid 1px black;
+        color:white;
+        background-color:#03A9F4 ;
+        text-decoration: none;
+        font-size: 1.3em;
+        cursor: pointer;
+        transition:.3s;
+        margin-top: .5em;
+        text-align: center;
+        justify-content: center;}
+    .block{
+        margin-top: 5em;
+        display:flex;
+        columns:auto;
+        align-items:center;
+        justify-content: center;
+    }
+    
+    .imageLandingContainer {
+        width: 30em;
+        height: 20em;
+        overflow: hidden;
+    }
+      
+    .imageLanding {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border: 2px solid beige
+    }
+      
+    .buttonContainer {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+    
+    .buttonContainer button {
+        padding: 10px 20px;
+        margin: 0 10px;
+        font-size: 16px;
+        background-color: #f5f5f5;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    
+    .buttonContainer button:hover {
+        background-color: #ebebeb;
+    }
+    
+    .buttonContainer button:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+    
+    .finalBlock{
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .nameCont{
+        margin-top: 1em;
+        text-align:center;
+        background-color: beige;
+        padding: .25em;
+    }
+    
+    .nameLanding{
+        font-size: 1.2em;
+    }
+    
+    
+    
+    .navLinkButton{
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-self: center;
+    }
+    
+    .buttonEnter{
+        color:black;
+        transition: .3s;
+    }
+    .buttonEnter:hover{
+        padding: 1em;
+        font-size: 1.5em;
+    }
+    .title{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .logo{
+        margin-right: 2em;
+    }
 
