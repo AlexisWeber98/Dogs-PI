@@ -50,7 +50,7 @@ module.exports = postDogs = async (req, res) => {
       created: true,
     });
 
-    console.log(dog);
+    console.log("el log del create:", dog);
 
     for (let i = 0; i < temperamentRecords.length; i++) {
       await dog.addTemperament(temperamentRecords[i]);
