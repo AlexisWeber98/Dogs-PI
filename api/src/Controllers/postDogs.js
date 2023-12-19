@@ -49,6 +49,7 @@ module.exports = postDogs = async (req, res) => {
       created: true,
     });
     
+    console.log(dog);
 
     for (let i = 0; i < temperamentRecords.length; i++) {
       await dog.addTemperament(temperamentRecords[i]);
