@@ -1,4 +1,4 @@
-const { Dog, Temperament } = require('../db');
+const { Dog, Temperament } = require("../db");
 
 module.exports = postDogs = async (req, res) => {
   try {
@@ -18,8 +18,10 @@ module.exports = postDogs = async (req, res) => {
 
     console.log(req.body);
 
-    let imagen = image
-    if (!imagen) imagen = "https://www.kuwaittimes.com/wp-content/uploads/2023/04/1441.jpg"
+    let imagen = image;
+    if (!imagen)
+      imagen =
+        "https://www.kuwaittimes.com/wp-content/uploads/2023/04/1441.jpg";
     if (!name || !heightMin || !heightMax || !weightMin || !weightMax) {
       return res.status(400).json({ message: "All fields are required" });
     }
@@ -44,11 +46,10 @@ module.exports = postDogs = async (req, res) => {
       lifeSpan,
       bredFor,
       breedGroup,
-      temperament,
       vacunated,
       created: true,
     });
-    
+
     console.log(dog);
 
     for (let i = 0; i < temperamentRecords.length; i++) {
@@ -60,11 +61,3 @@ module.exports = postDogs = async (req, res) => {
     res.status(500).send(error.message);
   }
 };
-
-
-
-
-
-
-
-
